@@ -2,15 +2,16 @@ import React from "react";
 import AddTodoForm from "./AddTodoForm";
 import TodoList from "./TodoList";
 function App() {
-  const [newTodo, setNewTodo] = React.useState("");
+  function addTodo(newTodo) {
+    setTodoList([...todoList, newTodo]);
+  }
+  // creating new state variable named todoList with setter setTodoList and default value of an empty Array
+  const [todoList, setTodoList] = React.useState([]);
   return (
     <div>
       <h1>Todo List</h1>
-      <AddTodoForm onAddTodo={setNewTodo} />
-      <p>
-        <li>{newTodo}</li>
-      </p>
-      <TodoList />
+      <AddTodoForm onAddTodo={addTodo} />
+      <TodoList todoList={todoList} />
     </div>
   );
 }
