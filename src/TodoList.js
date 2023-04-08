@@ -1,28 +1,20 @@
 import React from "react";
 import TodoListItem from "./TodoListItem";
 
-const todoList = [
-  {
-    id: 1,
-    title: "Plan learning schedule",
-  },
-  {
-    id: 2,
-    title: "Read 'The road of React'",
-  },
-  {
-    id: 3,
-    title: "Complete assignments",
-  },
-];
+//function that maping over todoList array
+//adding props as a parameter to the TodoList functional component
+//change todoList to reference props instead of the hard-coded variable
 
-function TodoList() {
+// updated props to use destructuring
+function TodoList({ todoList }) {
   return (
-    <ul>
-      {todoList.map(function (item) {
-        return <TodoListItem key={item.id} item={item}></TodoListItem>;
-      })}
-    </ul>
+    <>
+      <ul>
+        {todoList.map(function (todo) {
+          return <TodoListItem key={todo.id} todo={todo}></TodoListItem>;
+        })}
+      </ul>
+    </>
   );
 }
 export default TodoList;
