@@ -1,11 +1,7 @@
 import React from "react";
 import TodoListItem from "./TodoListItem";
 
-//function that maping over todoList array
-//adding props as a parameter to the TodoList functional component
-//change todoList to reference props instead of the hard-coded variable
-
-// updated props to use destructuring
+/*component that destructuring new tidi item that comes from input*/
 function TodoList({ todoList }) {
   return (
     <>

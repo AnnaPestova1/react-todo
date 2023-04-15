@@ -1,7 +1,6 @@
 import React from "react";
-//list of added todos
 
-// updated props to use destructuring
+/*component that add the title from submitted tdo value in the list*/
 function TodoListItem({ todo }) {
   return (
     <div>
