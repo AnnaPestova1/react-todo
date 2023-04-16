@@ -1,4 +1,6 @@
 import React from "react";
+import InputWithLabel from "./InputWithLabel";
+
 /* component that takes user's input and sets new todo title*/
 function AddTodoForm({ onAddTodo }) {
   /*hook that let to add changes in todoTitle*/
@@ -19,18 +21,17 @@ function AddTodoForm({ onAddTodo }) {
     /*reset the todoTitle state to an empty String*/
     setTodoTitle("");
   }
-  /* controlled input form for adding new todo and submit button*/
+  /* controlled form for adding new todo through InputWithLabel component and submit button*/
 
   return (
     <form onSubmit={handleAddTodo}>
-      <label htmlFor="todoTitle">Title </label>
-      <input
+      <InputWithLabel
         id="todoTitle"
-        type="text"
-        name="title"
         value={todoTitle}
-        onChange={handleTitleChange}
-      />
+        onInputChange={handleTitleChange}
+      >
+        <strong>Title:</strong>
+      </InputWithLabel>
       <button type="submit">Add</button>
     </form>
   );

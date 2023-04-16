@@ -1,13 +1,19 @@
 import React from "react";
 import TodoListItem from "./TodoListItem";
 
-/*component that destructuring new tidi item that comes from input*/
-function TodoList({ todoList }) {
+/*component that renders all todo items*/
+function TodoList({ todoList, onRemoveTodo }) {
   return (
     <>
       <ul>
         {todoList.map(function (todo) {
-          return <TodoListItem key={todo.id} todo={todo}></TodoListItem>;
+          return (
+            <TodoListItem
+              key={todo.id}
+              todo={todo}
+              onRemoveTodo={onRemoveTodo}
+            ></TodoListItem>
+          );
         })}
       </ul>
     </>
