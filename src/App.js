@@ -9,44 +9,91 @@ function App() {
 
   const [isLoading, setIsLoading] = React.useState(true);
 
-  /*hook that response for mimic API fetch*/
+  /*getting the infirmation from remote site*/
+  const fetchData = async () => {
+    const url = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${process.env.REACT_APP_TABLE_NAME}`;
+    const options = {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
+      },
+    };
+    try {
+      const response = await fetch(url, options);
 
-  React.useEffect(() => {
-    new Promise((resolve, reject) =>
-      setTimeout(
-        () =>
-          resolve({
-            data: {
-              todoList: JSON.parse(localStorage.getItem("savedTodoList")),
-            },
-          }),
-        2000
-      )
-    ).then((result) => {
-      setTodoList(result.data.todoList);
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status}`);
+      }
+      const data = await response.json();
+      const todos = data.records.map((todo) => {
+        return { id: todo.id, title: todo.fields.title };
+      });
+      setTodoList(todos);
       setIsLoading(false);
-    });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  /*hook that fetching data from API */
+  React.useEffect(() => {
+    fetchData();
   }, []);
 
-  /*hook that save new todo in local storage and load it fron there after reloading page*/
-  React.useEffect(() => {
-    if (isLoading === false) {
-      localStorage.setItem("savedTodoList", JSON.stringify(todoList));
+  /*posting new todo on remote site*/
+  const addTodo = async (title) => {
+    const postTitle = {
+      fields: {
+        title: title,
+      },
+    };
+    const url = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${process.env.REACT_APP_TABLE_NAME}`;
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
+      },
+      body: JSON.stringify(postTitle),
+    };
+    try {
+      const response = await fetch(url, options);
+      if (!response.ok) {
+        throw new Error(`Error has ocurred: ${response.status}`);
+      }
+      const todo = await response.json();
+      const newTodo = { id: todo.id, title: todo.fields.title };
+      setTodoList([...todoList, newTodo]);
+    } catch (error) {
+      console.log(error.message);
+      return null;
     }
-  }, [todoList]);
+  };
 
-  /*function for removing todo item */
-  function removeTodo(id) {
-    const newTodoList = todoList.filter(function (todo) {
-      return id !== todo.id;
-    });
-    setTodoList(newTodoList);
-  }
+  /*function for removing todo item from remote site*/
 
-  /*function that adds a new todo to the list */
-  function addTodo(newTodo) {
-    setTodoList([...todoList, newTodo]);
-  }
+  const removeTodo = async (id) => {
+    const url = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${process.env.REACT_APP_TABLE_NAME}/${id}`;
+    const options = {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
+      },
+    };
+    try {
+      const response = await fetch(url, options);
+      if (!response.ok) {
+        throw new Error(`Error has ocurred: ${response.status}`);
+      }
+      const newTodoList = todoList.filter(function (todo) {
+        return id !== todo.id;
+      });
+      setTodoList(newTodoList);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   return (
     <>
@@ -54,8 +101,10 @@ function App() {
       <AddTodoForm onAddTodo={addTodo} />
       {isLoading ? (
         <p>Loading ...</p>
-      ) : (
+      ) : todoList.length ? (
         <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
+      ) : (
+        <h2 style={{ textAlign: "center" }}>Good job!</h2>
       )}
     </>
   );
