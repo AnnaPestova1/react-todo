@@ -8,16 +8,19 @@ function AddTodoForm({ onAddTodo }) {
 
   /* function that takes value from input as a parameter*/
   function handleTitleChange(event) {
-    let newTodoTitle = event.target.value;
+    const newTodoTitle = event.target.value;
     setTodoTitle(newTodoTitle);
   }
-  /*function that wotk with value after submitting the form*/
+  /*function that work with value after submitting the form*/
   function handleAddTodo(event) {
-    console.log(event);
+    /*prevent adding empty todo */
     event.preventDefault();
-    console.log(todoTitle);
+    if (todoTitle === "") {
+      return;
+    }
+    // console.log(todoTitle);
     /*the onAddTodo callback prop to pass an Object*/
-    onAddTodo({ title: todoTitle, id: Date.now() });
+    onAddTodo(todoTitle);
     /*reset the todoTitle state to an empty String*/
     setTodoTitle("");
   }
