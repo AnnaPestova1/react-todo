@@ -1,6 +1,7 @@
 import React from "react";
-import AddTodoForm from "./AddTodoForm";
-import TodoList from "./TodoList";
+import AddTodoForm from "../AddTodoForm/AddTodoForm";
+import TodoList from "../TodoList/TodoList";
+import style from "./TodoContainer.module.css";
 
 /*The component that works with API and adds, deletes and fetches the data from there */
 
@@ -99,14 +100,14 @@ function TodoContainer() {
 
   return (
     <>
-      <h1>Todo List</h1>
+      <h1 className={style.TodoList}>Todo List</h1>
       <AddTodoForm onAddTodo={addTodo} />
       {isLoading ? (
-        <p>Loading ...</p>
+        <p className={style.Loading}>Loading ...</p>
       ) : todoList.length ? (
         <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
       ) : (
-        <h2 style={{ textAlign: "center" }}>Good job!</h2>
+        <h2 className={style.GoodJob}>Good job!</h2>
       )}
     </>
   );

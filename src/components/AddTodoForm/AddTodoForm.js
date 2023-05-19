@@ -1,5 +1,7 @@
 import React from "react";
-import InputWithLabel from "./InputWithLabel";
+import InputWithLabel from "../InputWithLabel";
+import { ReactComponent as Add } from "../../img/add_black_24dp.svg";
+import style from "./AddTodoForm.module.css";
 
 /* component that takes user's input and sets new todo title*/
 function AddTodoForm({ onAddTodo }) {
@@ -27,7 +29,7 @@ function AddTodoForm({ onAddTodo }) {
   /* controlled form for adding new todo through InputWithLabel component and submit button*/
 
   return (
-    <form onSubmit={handleAddTodo}>
+    <form onSubmit={handleAddTodo} className={style.AddTodoForm}>
       <InputWithLabel
         id="todoTitle"
         value={todoTitle}
@@ -35,7 +37,9 @@ function AddTodoForm({ onAddTodo }) {
       >
         <strong>Title:</strong>
       </InputWithLabel>
-      <button type="submit">Add</button>
+      <button type="submit" title="add to do">
+        <Add />
+      </button>
     </form>
   );
 }
