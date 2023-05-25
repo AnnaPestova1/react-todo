@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 /*component with reusable controlled input with label */
 function InputWithLabel({
@@ -29,4 +30,12 @@ function InputWithLabel({
     </>
   );
 }
+InputWithLabel.propTypes = {
+  id: PropTypes.string,
+  children: PropTypes.object,
+  value: PropTypes.string,
+  type: PropTypes.string,
+  name: PropTypes.string,
+  onInputChange: PropTypes.func,
+};
 export default InputWithLabel;
