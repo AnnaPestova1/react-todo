@@ -2,10 +2,11 @@ import React from "react";
 import AddTodoForm from "../AddTodoForm/AddTodoForm";
 import TodoList from "../TodoList/TodoList";
 import style from "./TodoContainer.module.css";
+import PropTypes from "prop-types";
 
 /*The component that works with API and adds, deletes and fetches the data from there */
 
-function TodoContainer() {
+function TodoContainer({ tableName, baseName, apiKey }) {
   const [todoList, setTodoList] = React.useState([]);
 
   /*hook that help to appear the "loading..." message in the add during waiting fetching data */
@@ -13,11 +14,11 @@ function TodoContainer() {
 
   /*getting the infirmation from remote site*/
   const fetchData = async () => {
-    const url = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${process.env.REACT_APP_TABLE_NAME}`;
+    const url = `https://api.airtable.com/v0/${baseName}/${tableName}`;
     const options = {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
+        Authorization: `Bearer ${apiKey}`,
       },
     };
     try {
@@ -49,12 +50,12 @@ function TodoContainer() {
         title: title,
       },
     };
-    const url = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${process.env.REACT_APP_TABLE_NAME}`;
+    const url = `https://api.airtable.com/v0/${baseName}/${tableName}`;
     const options = {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
+        Authorization: `Bearer ${apiKey}`,
       },
       body: JSON.stringify(postTitle),
     };
@@ -75,12 +76,12 @@ function TodoContainer() {
   /*function for removing todo item from remote site*/
 
   const removeTodo = async (id) => {
-    const url = `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/${process.env.REACT_APP_TABLE_NAME}/${id}`;
+    const url = `https://api.airtable.com/v0/${baseName}/${tableName}/${id}`;
     const options = {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
+        Authorization: `Bearer ${apiKey}`,
       },
     };
     try {
@@ -112,5 +113,9 @@ function TodoContainer() {
     </>
   );
 }
-
+TodoContainer.propTypes = {
+  tableName: PropTypes.string,
+  baseName: PropTypes.string,
+  apiKey: PropTypes.string,
+};
 export default TodoContainer;
