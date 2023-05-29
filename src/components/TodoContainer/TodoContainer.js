@@ -14,7 +14,7 @@ function TodoContainer({ tableName, baseName, apiKey }) {
 
   /*getting the infirmation from remote site*/
   const fetchData = async () => {
-    const url = `https://api.airtable.com/v0/${baseName}/${tableName}`;
+    const url = `https://api.airtable.com/v0/${baseName}/${tableName}?view=Grid%20view`;
     const options = {
       method: "GET",
       headers: {
@@ -28,9 +28,24 @@ function TodoContainer({ tableName, baseName, apiKey }) {
         throw new Error(`Error: ${response.status}`);
       }
       const data = await response.json();
+
       const todos = data.records.map((todo) => {
-        return { id: todo.id, title: todo.fields.title };
+        const d = new Date(todo.createdTime);
+        //const date = `${d.getMonth()}/${d.getDate()}/${d.getFullYear()}`;
+        const date = d.toLocaleDateString("en-EN", {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        });
+
+        return {
+          id: todo.id,
+          createdDate: date,
+          title: todo.fields.title,
+        };
       });
+
+      //setTodoList(todos.sort(sortData));
       setTodoList(todos);
       setIsLoading(false);
     } catch (error) {
@@ -64,6 +79,7 @@ function TodoContainer({ tableName, baseName, apiKey }) {
       if (!response.ok) {
         throw new Error(`Error has ocurred: ${response.status}`);
       }
+
       const todo = await response.json();
       const newTodo = { id: todo.id, title: todo.fields.title };
       setTodoList([...todoList, newTodo]);
