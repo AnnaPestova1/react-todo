@@ -14,7 +14,8 @@ function TodoContainer({ tableName, baseName, apiKey }) {
 
   /*getting the infirmation from remote site*/
   const fetchData = async () => {
-    const url = `https://api.airtable.com/v0/${baseName}/${tableName}?view=Grid%20view`;
+    //const url = `https://api.airtable.com/v0/${baseName}/${tableName}?view=Grid%20view`;
+    const url = `https://api.airtable.com/v0/${baseName}/${tableName}?sort[0][field]=title&sort[0][direction]=asc`;
     const options = {
       method: "GET",
       headers: {
