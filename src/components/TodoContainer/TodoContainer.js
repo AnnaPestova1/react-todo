@@ -12,10 +12,71 @@ function TodoContainer({ tableName, baseName, apiKey }) {
   /*hook that help to appear the "loading..." message in the add during waiting fetching data */
   const [isLoading, setIsLoading] = React.useState(true);
 
+  // functions to sort todos
+  const onSortByTitle = () => {
+    function sortData(a, b) {
+      if (a.title > b.title) {
+        return 1;
+      }
+      if (a.title < b.title) {
+        return -1;
+      }
+      return 0;
+    }
+    const newTodoList = [...todoList];
+    newTodoList.sort(sortData);
+    setTodoList(newTodoList);
+  };
+
+  const onSortByTitleDes = () => {
+    function sortData(a, b) {
+      if (a.title < b.title) {
+        return 1;
+      }
+      if (a.title > b.title) {
+        return -1;
+      }
+      return 0;
+    }
+    const newTodoList = [...todoList];
+    newTodoList.sort(sortData);
+    setTodoList(newTodoList);
+  };
+
+  const onSortByDate = () => {
+    function sortData(a, b) {
+      if (a.createdDate > b.createdDate) {
+        return 1;
+      }
+      if (a.createdDate < b.createdDate) {
+        return -1;
+      }
+      return 0;
+    }
+    const newTodoList = [...todoList];
+    newTodoList.sort(sortData);
+    setTodoList(newTodoList);
+  };
+
+  const onSortByDateDes = () => {
+    function sortData(a, b) {
+      if (a.createdDate < b.createdDate) {
+        return 1;
+      }
+      if (a.createdDate > b.createdDate) {
+        return -1;
+      }
+      return 0;
+    }
+    const newTodoList = [...todoList];
+    newTodoList.sort(sortData);
+    setTodoList(newTodoList);
+  };
+
   /*getting the infirmation from remote site*/
   const fetchData = async () => {
     //const url = `https://api.airtable.com/v0/${baseName}/${tableName}?view=Grid%20view`;
-    //const url = `https://api.airtable.com/v0/${baseName}/${tableName}?sort[0][field]=title&sort[0][direction]=asc`;
+    // const url = `https://api.airtable.com/v0/${baseName}/${tableName}?sort[0][field]=title&[direction]=asc`;
     const url = `https://api.airtable.com/v0/${baseName}/${tableName}`;
     const options = {
       method: "GET",
@@ -30,17 +91,20 @@ function TodoContainer({ tableName, baseName, apiKey }) {
         throw new Error(`Error: ${response.status}`);
       }
       const data = await response.json();
-      function sortData(a, b) {
-        if (a.title < b.title) {
-          return 1;
-        }
-        if (a.title > b.title) {
-          return -1;
-        }
-        return 0;
-      }
+
+      // function sortData(a, b) {
+      //   if (a.title > b.title) {
+      //     return 1;
+      //   }
+      //   if (a.title < b.title) {
+      //     return -1;
+      //   }
+      //   return 0;
+      // }
+
       const todos = data.records.map((todo) => {
         const d = new Date(todo.createdTime);
+        //const date = `${d.getMonth()}/${d.getDate()}/${d.getFullYear()}`;
         const date = d.toLocaleDateString("en-EN", {
           year: "numeric",
           month: "long",
@@ -55,7 +119,7 @@ function TodoContainer({ tableName, baseName, apiKey }) {
       });
 
       //setTodoList(todos.sort(sortData));
-      setTodoList(todos.sort(sortData));
+      setTodoList(todos);
       setIsLoading(false);
     } catch (error) {
       console.log(error.message);
@@ -131,7 +195,14 @@ function TodoContainer({ tableName, baseName, apiKey }) {
       {isLoading ? (
         <p className={style.Loading}>Loading ...</p>
       ) : todoList.length ? (
-        <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
+        <TodoList
+          todoList={todoList}
+          onSortByTitle={onSortByTitle}
+          onSortByTitleDes={onSortByTitleDes}
+          onSortByDate={onSortByDate}
+          onSortByDateDes={onSortByDateDes}
+          onRemoveTodo={removeTodo}
+        />
       ) : (
         <h2 className={style.GoodJob}>Good job!</h2>
       )}

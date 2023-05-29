@@ -8,7 +8,8 @@ function TodoListItem({ todo, onRemoveTodo }) {
   return (
     <div>
       <li className={style.ListItem}>
-        <span>{todo.title}</span>
+        <span className={style.todoTitle}>{todo.title}</span>
+        <span className={style.todoDate}>{todo.createdDate}</span>
         <span>
           <button
             type="button"
