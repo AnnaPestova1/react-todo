@@ -15,7 +15,8 @@ function TodoContainer({ tableName, baseName, apiKey }) {
   /*getting the infirmation from remote site*/
   const fetchData = async () => {
     //const url = `https://api.airtable.com/v0/${baseName}/${tableName}?view=Grid%20view`;
-    const url = `https://api.airtable.com/v0/${baseName}/${tableName}?sort[0][field]=title&sort[0][direction]=asc`;
+    //const url = `https://api.airtable.com/v0/${baseName}/${tableName}?sort[0][field]=title&sort[0][direction]=asc`;
+    const url = `https://api.airtable.com/v0/${baseName}/${tableName}`;
     const options = {
       method: "GET",
       headers: {
@@ -29,10 +30,17 @@ function TodoContainer({ tableName, baseName, apiKey }) {
         throw new Error(`Error: ${response.status}`);
       }
       const data = await response.json();
-
+      function sortData(a, b) {
+        if (a.title > b.title) {
+          return 1;
+        }
+        if (a.title < b.title) {
+          return -1;
+        }
+        return 0;
+      }
       const todos = data.records.map((todo) => {
         const d = new Date(todo.createdTime);
-        //const date = `${d.getMonth()}/${d.getDate()}/${d.getFullYear()}`;
         const date = d.toLocaleDateString("en-EN", {
           year: "numeric",
           month: "long",
@@ -47,7 +55,7 @@ function TodoContainer({ tableName, baseName, apiKey }) {
       });
 
       //setTodoList(todos.sort(sortData));
-      setTodoList(todos);
+      setTodoList(todos.sort(sortData));
       setIsLoading(false);
     } catch (error) {
       console.log(error.message);
