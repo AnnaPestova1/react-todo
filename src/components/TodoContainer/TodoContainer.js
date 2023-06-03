@@ -45,13 +45,7 @@ function TodoContainer({ tableName, baseName, apiKey }) {
 
   const onSortByDate = () => {
     function sortData(a, b) {
-      if (a.createdDate > b.createdDate) {
-        return 1;
-      }
-      if (a.createdDate < b.createdDate) {
-        return -1;
-      }
-      return 0;
+      return new Date(b.createdDate) - new Date(a.createdDate);
     }
     const newTodoList = [...todoList];
     newTodoList.sort(sortData);
@@ -60,13 +54,7 @@ function TodoContainer({ tableName, baseName, apiKey }) {
 
   const onSortByDateDes = () => {
     function sortData(a, b) {
-      if (a.createdDate < b.createdDate) {
-        return 1;
-      }
-      if (a.createdDate > b.createdDate) {
-        return -1;
-      }
-      return 0;
+      return new Date(a.createdDate) - new Date(b.createdDate);
     }
     const newTodoList = [...todoList];
     newTodoList.sort(sortData);
@@ -86,7 +74,6 @@ function TodoContainer({ tableName, baseName, apiKey }) {
     };
     try {
       const response = await fetch(url, options);
-
       if (!response.ok) {
         throw new Error(`Error: ${response.status}`);
       }
@@ -104,7 +91,6 @@ function TodoContainer({ tableName, baseName, apiKey }) {
 
       const todos = data.records.map((todo) => {
         const d = new Date(todo.createdTime);
-        //const date = `${d.getMonth()}/${d.getDate()}/${d.getFullYear()}`;
         const date = d.toLocaleDateString("en-EN", {
           year: "numeric",
           month: "long",
@@ -129,15 +115,16 @@ function TodoContainer({ tableName, baseName, apiKey }) {
   /*hook that fetching data from API */
   React.useEffect(() => {
     fetchData();
-  }, []);
+  }, [tableName]);
 
   /*posting new todo on remote site*/
-  const addTodo = async (title) => {
+  const addTodo = async (title, createdDate) => {
     const postTitle = {
       fields: {
         title: title,
       },
     };
+    // console.log(postTitle);
     const url = `https://api.airtable.com/v0/${baseName}/${tableName}`;
     const options = {
       method: "POST",
@@ -154,7 +141,21 @@ function TodoContainer({ tableName, baseName, apiKey }) {
       }
 
       const todo = await response.json();
-      const newTodo = { id: todo.id, title: todo.fields.title };
+
+      const d = new Date(todo.createdTime);
+
+      const date = d.toLocaleDateString("en-EN", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      });
+
+      const newTodo = {
+        id: todo.id,
+        title: todo.fields.title,
+        createdDate: date,
+      };
+      console.log(newTodo);
       setTodoList([...todoList, newTodo]);
     } catch (error) {
       console.log(error.message);

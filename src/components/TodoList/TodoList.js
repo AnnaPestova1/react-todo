@@ -15,14 +15,21 @@ function TodoList({
   return (
     <>
       <ul className={style.TodoListUl}>
-        {" "}
         <span>
-          <button onClick={onSortByTitle}>Sort by title (A-Z)</button>
-          <button onClick={onSortByDate}>Sort by date(A-Z)</button>
+          <button type="button" value="titleAsc" onClick={onSortByTitle}>
+            Sort by title (A-Z)
+          </button>
+          <button type="button" value="dateAsc" onClick={onSortByDate}>
+            Sort by date(asc)
+          </button>
         </span>
         <span>
-          <button onClick={onSortByTitleDes}>Sort by title (Z-A)</button>
-          <button onClick={onSortByDateDes}>Sort by date(Z-A)</button>
+          <button type="button" value="titleDesc" onClick={onSortByTitleDes}>
+            Sort by title (Z-A)
+          </button>
+          <button type="button" value="dateDesc" onClick={onSortByDateDes}>
+            Sort by date(desc)
+          </button>
         </span>
         {todoList.map(function (todo) {
           return (
