@@ -12,7 +12,9 @@ function TodoContainer({ tableName, baseName, apiKey }) {
   /*hook that help to appear the "loading..." message in the add during waiting fetching data */
   const [isLoading, setIsLoading] = React.useState(true);
 
+  const [sortDirection, setSortDirection] = React.useState("");
   // functions to sort todos
+
   const onSortByTitle = () => {
     function sortData(a, b) {
       if (a.title > b.title) {
@@ -23,9 +25,8 @@ function TodoContainer({ tableName, baseName, apiKey }) {
       }
       return 0;
     }
-    const newTodoList = [...todoList];
-    newTodoList.sort(sortData);
-    setTodoList(newTodoList);
+
+    setTodoList((oldTodoList) => [...oldTodoList].sort(sortData));
   };
 
   const onSortByTitleDes = () => {
@@ -38,29 +39,41 @@ function TodoContainer({ tableName, baseName, apiKey }) {
       }
       return 0;
     }
-    const newTodoList = [...todoList];
-    newTodoList.sort(sortData);
-    setTodoList(newTodoList);
+    setTodoList((oldTodoList) => [...oldTodoList].sort(sortData));
   };
 
   const onSortByDate = () => {
     function sortData(a, b) {
       return new Date(b.createdDate) - new Date(a.createdDate);
     }
-    const newTodoList = [...todoList];
-    newTodoList.sort(sortData);
-    setTodoList(newTodoList);
+    setTodoList((oldTodoList) => [...oldTodoList].sort(sortData));
   };
 
   const onSortByDateDes = () => {
     function sortData(a, b) {
       return new Date(a.createdDate) - new Date(b.createdDate);
     }
-    const newTodoList = [...todoList];
-    newTodoList.sort(sortData);
-    setTodoList(newTodoList);
+    setTodoList((oldTodoList) => [...oldTodoList].sort(sortData));
   };
-
+  const sortList = (sortDirection) => {
+    switch (sortDirection) {
+      case "titleAsc":
+        onSortByTitle();
+        break;
+      case "titleDesc":
+        onSortByTitleDes();
+        break;
+      case "dateAsc":
+        onSortByDate();
+        break;
+      case "dateDesc":
+        onSortByDateDes();
+        break;
+      default:
+        onSortByDate();
+    }
+    setSortDirection(sortDirection);
+  };
   /*getting the infirmation from remote site*/
   const fetchData = async () => {
     //const url = `https://api.airtable.com/v0/${baseName}/${tableName}?view=Grid%20view`;
@@ -118,7 +131,7 @@ function TodoContainer({ tableName, baseName, apiKey }) {
   }, [tableName]);
 
   /*posting new todo on remote site*/
-  const addTodo = async (title, createdDate) => {
+  const addTodo = async (title) => {
     const postTitle = {
       fields: {
         title: title,
@@ -155,8 +168,9 @@ function TodoContainer({ tableName, baseName, apiKey }) {
         title: todo.fields.title,
         createdDate: date,
       };
-      console.log(newTodo);
-      setTodoList([...todoList, newTodo]);
+      //console.log(newTodo);
+      setTodoList((oldTodoList) => [...oldTodoList, newTodo]);
+      sortList(sortDirection);
     } catch (error) {
       console.log(error.message);
       return null;
@@ -198,10 +212,7 @@ function TodoContainer({ tableName, baseName, apiKey }) {
       ) : todoList.length ? (
         <TodoList
           todoList={todoList}
-          onSortByTitle={onSortByTitle}
-          onSortByTitleDes={onSortByTitleDes}
-          onSortByDate={onSortByDate}
-          onSortByDateDes={onSortByDateDes}
+          onSort={sortList}
           onRemoveTodo={removeTodo}
         />
       ) : (

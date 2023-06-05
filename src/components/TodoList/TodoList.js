@@ -4,30 +4,43 @@ import style from "./TodoList.module.css";
 import PropTypes from "prop-types";
 
 /*component that renders all todo items*/
-function TodoList({
-  todoList,
-  onSortByTitle,
-  onSortByTitleDes,
-  onSortByDate,
-  onSortByDateDes,
-  onRemoveTodo,
-}) {
+function TodoList({ todoList, onSort, onRemoveTodo }) {
   return (
     <>
       <ul className={style.TodoListUl}>
         <span>
-          <button type="button" value="titleAsc" onClick={onSortByTitle}>
+          <button
+            type="button"
+            onClick={() => {
+              onSort("titleAsc");
+            }}
+          >
             Sort by title (A-Z)
           </button>
-          <button type="button" value="dateAsc" onClick={onSortByDate}>
+          <button
+            type="button"
+            onClick={() => {
+              onSort("dateAsc");
+            }}
+          >
             Sort by date(asc)
           </button>
         </span>
         <span>
-          <button type="button" value="titleDesc" onClick={onSortByTitleDes}>
+          <button
+            type="button"
+            onClick={() => {
+              onSort("titleDesc");
+            }}
+          >
             Sort by title (Z-A)
           </button>
-          <button type="button" value="dateDesc" onClick={onSortByDateDes}>
+          <button
+            type="button"
+            onClick={() => {
+              onSort("dateDesc");
+            }}
+          >
             Sort by date(desc)
           </button>
         </span>
@@ -46,10 +59,7 @@ function TodoList({
 }
 TodoList.propTypes = {
   todoList: PropTypes.array,
-  onSortByTitle: PropTypes.func,
-  onSortByTitleDes: PropTypes.func,
-  onSortByDate: PropTypes.func,
-  onSortByDateDes: PropTypes.func,
+  onSort: PropTypes.func,
   onRemoveTodo: PropTypes.func,
 };
 export default TodoList;
