@@ -5,6 +5,15 @@
     color: rgb(76, 6, 155);
 }
 
+.todoTitle,
+.todoDate {
+    padding: 10px;
+}
+
+.todoDate {
+    font-size: 15px;
+}
+
 .RemoveButton {
     width: auto;
 

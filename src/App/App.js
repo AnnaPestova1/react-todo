@@ -12,8 +12,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route
-          exact
-          path="/"
+          path="/*"
           element={
             <TodoContainer
               tableName={tableName}

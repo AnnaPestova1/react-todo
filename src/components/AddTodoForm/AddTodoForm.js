@@ -15,6 +15,7 @@ function AddTodoForm({ onAddTodo }) {
   }
   /*function that work with value after submitting the form*/
   function handleAddTodo(event) {
+    console.log(event);
     event.preventDefault();
     if (todoTitle === "") {
       return;
