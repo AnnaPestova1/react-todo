@@ -1,0 +1,25 @@
+.NavBar {
+    display: flex;
+    align-items: center;
+    background-color: rgba(0, 0, 0, .01);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .01);
+    backdrop-filter: blur(8px);
+    font-size: 20px;
+    top: 0;
+    margin-top: 0;
+    height: 35px;
+    width: 100%;
+    position: fixed;
+    justify-content: flex-end;
+
+}
+
+.NavBar a {
+    text-decoration: none;
+    padding: 0 10px;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {}
+
+
+@media (max-width: 767px) {}

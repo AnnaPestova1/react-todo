@@ -75,7 +75,7 @@ function TodoContainer({ tableName, baseName, apiKey }) {
     setSortDirection(sortDirection);
   };
   /*getting the infirmation from remote site*/
-  const fetchData = async () => {
+  const fetchData = async (tableName) => {
     //const url = `https://api.airtable.com/v0/${baseName}/${tableName}?view=Grid%20view`;
     // const url = `https://api.airtable.com/v0/${baseName}/${tableName}?sort[0][field]=title&[direction]=asc`;
     const url = `https://api.airtable.com/v0/${baseName}/${tableName}`;
@@ -91,16 +91,6 @@ function TodoContainer({ tableName, baseName, apiKey }) {
         throw new Error(`Error: ${response.status}`);
       }
       const data = await response.json();
-
-      // function sortData(a, b) {
-      //   if (a.title > b.title) {
-      //     return 1;
-      //   }
-      //   if (a.title < b.title) {
-      //     return -1;
-      //   }
-      //   return 0;
-      // }
 
       const todos = data.records.map((todo) => {
         const d = new Date(todo.createdTime);
@@ -119,6 +109,7 @@ function TodoContainer({ tableName, baseName, apiKey }) {
 
       //setTodoList(todos.sort(sortData));
       setTodoList(todos);
+      sortList(sortDirection);
       setIsLoading(false);
     } catch (error) {
       console.log(error.message);
@@ -127,7 +118,9 @@ function TodoContainer({ tableName, baseName, apiKey }) {
 
   /*hook that fetching data from API */
   React.useEffect(() => {
-    fetchData();
+    fetchData(tableName);
+    console.log(fetchData(tableName));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tableName]);
 
   /*posting new todo on remote site*/
@@ -169,6 +162,7 @@ function TodoContainer({ tableName, baseName, apiKey }) {
         createdDate: date,
       };
       //console.log(newTodo);
+
       setTodoList((oldTodoList) => [...oldTodoList, newTodo]);
       sortList(sortDirection);
     } catch (error) {
@@ -205,7 +199,7 @@ function TodoContainer({ tableName, baseName, apiKey }) {
 
   return (
     <>
-      <h1 className={style.TodoList}>Todo List</h1>
+      <h1 className={style.TodoList}>{tableName}</h1>
       <AddTodoForm onAddTodo={addTodo} />
       {isLoading ? (
         <p className={style.Loading}>Loading ...</p>
