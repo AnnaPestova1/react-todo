@@ -19,7 +19,26 @@
     padding: 0 10px;
 }
 
-@media (min-width: 768px) and (max-width: 991px) {}
 
 
-@media (max-width: 767px) {}
+@media (max-width: 767px) {
+    .MobileMenu svg {
+        fill: rgb(77, 55, 103);
+        align-items: end;
+        margin: 20px;
+        padding-top: 20px;
+
+    }
+
+    .MobileMenuLinks {
+        overflow: hidden;
+        right: 0;
+        justify-content: flex-end;
+        margin: 5px;
+        padding: 5px;
+        margin-top: 20px;
+        padding-top: 20px;
+        list-style: none;
+    }
+
+}
