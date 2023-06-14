@@ -1,9 +1,10 @@
-import react, { Fragment, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import LightDarkMode from "../LightDarkMode/LightDarkMode";
 import { Link } from "react-router-dom";
 import { ReactComponent as Menu } from "../../img/menu_FILL0_wght400_GRAD0_opsz48.svg";
 import style from "./NavBar.module.css";
-console.log(document);
-function NavBar() {
+
+function NavBar({ theme, handleToggle }) {
   const [screenSize, setScreenSize] = useState(window.innerWidth);
   const [showMenu, setShowMenu] = useState(false);
 
@@ -43,6 +44,7 @@ function NavBar() {
           <Link to="/new">Todo</Link>
         </>
       )}
+      <LightDarkMode theme={theme} handleToggle={handleToggle} />
     </div>
   );
 }

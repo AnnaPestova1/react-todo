@@ -6,24 +6,22 @@ import PropTypes from "prop-types";
 /*component that add the title from submitted todo value in the list and remove item button*/
 function TodoListItem({ todo, onRemoveTodo }) {
   return (
-    <div>
-      <li className={style.ListItem}>
-        <span className={style.todoTitle}>{todo.title}</span>
-        <span className={style.todoDate}>{todo.createdDate}</span>
-        <span>
-          <button
-            type="button"
-            title="remove item"
-            onClick={function () {
-              return onRemoveTodo(todo.id);
-            }}
-            className={style.RemoveButton}
-          >
-            <Remove />
-          </button>
-        </span>
-      </li>
-    </div>
+    <li className={style.ListItem}>
+      <span className={style.todoTitle}>{todo.title}</span>
+      <span className={style.todoDate}>{todo.createdDate}</span>
+      <span>
+        <button
+          type="button"
+          title="remove item"
+          onClick={function () {
+            return onRemoveTodo(todo.id);
+          }}
+          className={style.RemoveButton}
+        >
+          <Remove />
+        </button>
+      </span>
+    </li>
   );
 }
 TodoListItem.propTypes = {

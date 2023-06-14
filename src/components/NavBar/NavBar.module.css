@@ -9,7 +9,7 @@
     margin-top: 0;
     height: 35px;
     width: 100%;
-    position: fixed;
+    position: sticky;
     justify-content: flex-end;
 
 }
@@ -17,13 +17,14 @@
 .NavBar a {
     text-decoration: none;
     padding: 0 10px;
+    color: inherit;
 }
 
 
 
 @media (max-width: 767px) {
     .MobileMenu svg {
-        fill: rgb(77, 55, 103);
+        fill: rgb(125, 85, 175);
         align-items: end;
         margin: 20px;
         padding-top: 20px;

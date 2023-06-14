@@ -198,8 +198,8 @@ function TodoContainer({ tableName, baseName, apiKey }) {
   };
 
   return (
-    <>
-      <h1 className={style.TodoList}>{tableName}</h1>
+    <div className={style.TodoTableName}>
+      <h1>{tableName}</h1>
       <AddTodoForm onAddTodo={addTodo} />
       {isLoading ? (
         <p className={style.Loading}>Loading ...</p>
@@ -212,7 +212,7 @@ function TodoContainer({ tableName, baseName, apiKey }) {
       ) : (
         <h2 className={style.GoodJob}>Good job!</h2>
       )}
-    </>
+    </div>
   );
 }
 TodoContainer.propTypes = {
