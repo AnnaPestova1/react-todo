@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import TodoContainer from "../components/TodoContainer/TodoContainer";
+import TodoContainer from "../TodoContainer/TodoContainer";
 import style from "./App.module.css";
-import NavBar from "../components/NavBar/NavBar";
+import NavBar from "../NavBar/NavBar";
 
 const tableName = process.env.REACT_APP_TABLE_NAME;
 const baseName = process.env.REACT_APP_AIRTABLE_BASE_ID;

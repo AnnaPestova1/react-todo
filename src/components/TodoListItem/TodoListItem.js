@@ -4,12 +4,13 @@ import style from "./TodoListItem.module.css";
 import PropTypes from "prop-types";
 
 /*component that add the title from submitted todo value in the list and remove item button*/
-function TodoListItem({ todo, onRemoveTodo }) {
+function TodoListItem({ todo, onRemoveTodo, onEditTodo }) {
   return (
     <li className={style.ListItem}>
       <span className={style.todoTitle}>{todo.title}</span>
       <span className={style.todoDate}>{todo.createdDate}</span>
       <span>
+        <button onClick={() => onEditTodo(todo.id)}>Edit</button>
         <button
           type="button"
           title="remove item"

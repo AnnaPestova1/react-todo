@@ -10,6 +10,7 @@ function AddTodoForm({ onAddTodo }) {
 
   /* function that takes value from input as a parameter*/
   function handleTitleChange(event) {
+    console.log(event);
     const newTodoTitle = event.target.value;
     setTodoTitle(newTodoTitle);
   }
@@ -20,7 +21,7 @@ function AddTodoForm({ onAddTodo }) {
     if (todoTitle === "") {
       return;
     }
-
+    console.log(todoTitle);
     /*the onAddTodo callback prop to pass an Object*/
     onAddTodo(todoTitle);
     /*reset the todoTitle state to an empty String*/

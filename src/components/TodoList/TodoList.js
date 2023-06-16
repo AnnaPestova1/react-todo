@@ -4,7 +4,7 @@ import style from "./TodoList.module.css";
 import PropTypes from "prop-types";
 
 /*component that renders all todo items*/
-function TodoList({ todoList, onSort, onRemoveTodo }) {
+function TodoList({ todoList, onSort, onRemoveTodo, onEditTodo }) {
   return (
     <>
       <ul className={style.TodoListUl}>
@@ -50,6 +50,7 @@ function TodoList({ todoList, onSort, onRemoveTodo }) {
               key={todo.id}
               todo={todo}
               onRemoveTodo={onRemoveTodo}
+              onEditTodo={onEditTodo}
             ></TodoListItem>
           );
         })}

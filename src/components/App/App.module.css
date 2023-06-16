@@ -71,7 +71,7 @@ h2 {
 
 @media (min-width: 768px) and (max-width: 991px) {
     body {
-        background: url('../img/IMG_4835.jpeg') left / cover;
+        background: url('../../img/IMG_4835.jpeg') left / cover;
     }
 
 
@@ -94,7 +94,7 @@ h2 {
 
 @media (max-width: 767px) {
     body {
-        background: url('../img/IMG_4835.jpeg') 25% 75% / cover;
+        background: url('../../img/IMG_4835.jpeg') 25% 75% / cover;
     }
 
     input {
