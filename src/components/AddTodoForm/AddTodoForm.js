@@ -44,7 +44,7 @@ function AddTodoForm({ onAddTodo }) {
     </form>
   );
 }
-
+console.log(typeof onAddTodo);
 AddTodoForm.propTypes = {
   onAddTodo: PropTypes.func,
 };

@@ -4,18 +4,16 @@ import TodoList from "../TodoList/TodoList";
 import style from "./TodoContainer.module.css";
 import PropTypes from "prop-types";
 import InputWithLabel from "../InputWithLabel";
+import SortTodo from "../SortTodo/SortTodo";
 
 /*The component that works with API and adds, deletes and fetches the data from there */
 
 function TodoContainer({ tableName, baseName, apiKey }) {
   const [todoList, setTodoList] = React.useState([]);
   const [isEditing, setIsEditing] = React.useState(false);
-  // const [currentTodo, setCurrentTodo] = React.useState({});
-
-  /*hook that help to appear the "loading..." message in the add during waiting fetching data */
-  const [isLoading, setIsLoading] = React.useState(true);
 
   const [sortDirection, setSortDirection] = React.useState("");
+  const [isLoading, setIsLoading] = React.useState(true);
   // functions to sort todos
 
   const onSortByTitle = () => {
@@ -76,6 +74,9 @@ function TodoContainer({ tableName, baseName, apiKey }) {
         onSortByDate();
     }
     setSortDirection(sortDirection);
+    // const [currentTodo, setCurrentTodo] = React.useState({});
+
+    /*hook that help to appear the "loading..." message in the add during waiting fetching data */
   };
   // const handleEditInputChange = (event) => {
   //   setCurrentTodo({ ...currentTodo, text: event.target.value });
@@ -205,8 +206,11 @@ function TodoContainer({ tableName, baseName, apiKey }) {
       };
       console.log(newTodo);
 
-      setTodoList((oldTodoList) => [...oldTodoList, newTodo]);
+      setTodoList((todoList) => [...todoList, newTodo]);
+
       sortList(sortDirection);
+      console.log(sortDirection);
+      console.log(todoList);
     } catch (error) {
       console.log(error.message);
       return null;
@@ -340,13 +344,6 @@ function TodoContainer({ tableName, baseName, apiKey }) {
             </button>
             <button onClick={() => setIsEditing(false)}>Cancel</button>
           </form>
-
-          <TodoList
-            todoList={todoList}
-            onSort={sortList}
-            onRemoveTodo={removeTodo}
-            onEditTodo={handleEditButton}
-          />
         </>
       ) : (
         <>
@@ -354,12 +351,20 @@ function TodoContainer({ tableName, baseName, apiKey }) {
           {isLoading ? (
             <p className={style.Loading}>Loading ...</p>
           ) : todoList.length ? (
-            <TodoList
-              todoList={todoList}
-              onSort={sortList}
-              onRemoveTodo={removeTodo}
-              onEditTodo={handleEditButton}
-            />
+            <>
+              <SortTodo
+                todoList={todoList}
+                sortList={sortList}
+                setTodoList={setTodoList}
+                sortDirection={sortDirection}
+                setSortDirection={setSortDirection}
+              />
+              <TodoList
+                todoList={todoList}
+                onRemoveTodo={removeTodo}
+                onEditTodo={handleEditButton}
+              />
+            </>
           ) : (
             <h2 className={style.GoodJob}>Good job!</h2>
           )}

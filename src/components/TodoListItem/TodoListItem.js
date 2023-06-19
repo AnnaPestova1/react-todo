@@ -28,6 +28,7 @@ function TodoListItem({ todo, onRemoveTodo, onEditTodo }) {
 TodoListItem.propTypes = {
   todo: PropTypes.object,
   onRemoveTodo: PropTypes.func,
+  onEditTodo: PropTypes.func,
 };
 
 export default TodoListItem;
