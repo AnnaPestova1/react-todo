@@ -47,6 +47,7 @@ function App() {
               />
             }
           />
+          <Route path="/" element={<Navigate to="/about" />} />
           <Route path="/*" element={<Navigate to="/404" />} />
           <Route path="/404" element={<NotFound />} />
         </Routes>

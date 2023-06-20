@@ -6,6 +6,7 @@ function InputWithLabel({
   id,
   children,
   value,
+  placeholder,
   type = "text",
   name = "title",
   onInputChange,
@@ -23,6 +24,7 @@ function InputWithLabel({
         ref={inputRef}
         id={id}
         type={type}
+        placeholder={placeholder}
         name={name}
         value={value}
         onChange={onInputChange}
@@ -35,6 +37,7 @@ InputWithLabel.propTypes = {
   children: PropTypes.object,
   value: PropTypes.string,
   type: PropTypes.string,
+  placeholder: PropTypes.string,
   name: PropTypes.string,
   onInputChange: PropTypes.func,
 };

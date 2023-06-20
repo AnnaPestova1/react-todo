@@ -1,5 +1,5 @@
 import React from "react";
-import InputWithLabel from "../InputWithLabel";
+import InputWithLabel from "../../InputWithLabel";
 import { ReactComponent as Add } from "../../../img/add_black_24dp.svg";
 import style from "./AddTodoForm.module.css";
 import PropTypes from "prop-types";
@@ -44,7 +44,7 @@ function AddTodoForm({ onAddTodo }) {
     </form>
   );
 }
-console.log(typeof onAddTodo);
+
 AddTodoForm.propTypes = {
   onAddTodo: PropTypes.func,
 };

@@ -3,7 +3,7 @@ import AddTodoForm from "../AddTodoForm/AddTodoForm";
 import TodoList from "../TodoList/TodoList";
 import style from "./TodoContainer.module.css";
 import PropTypes from "prop-types";
-import InputWithLabel from "../InputWithLabel";
+import InputWithLabel from "../../InputWithLabel";
 import SortTodo from "../SortTodo/SortTodo";
 
 /*The component that works with API and adds, deletes and fetches the data from there */
