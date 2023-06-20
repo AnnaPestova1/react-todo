@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import ToReadList from "../ToReadList/ToReadList";
 import PropTypes from "prop-types";
-import InputWithLabel from "../../InputWithLabel";
 import FetchList from "./FetchList/FetchList";
+import { ReactComponent as Add } from "../../../img/add_black_24dp.svg";
+import SearchBookForm from "../SearchBookForm/SearchBookForm";
+import Button from "../../Button";
 
 /*The component that works with API and adds, deletes and fetches the data from there */
 
@@ -10,7 +12,7 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
   const [toReadList, setToReadList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isAddingBook, setIsAddingBook] = useState(false);
-  const [search, setSearch] = useState("");
+  // const [search, setSearch] = useState("");
   const [books, setBooks] = useState([]);
   const [selectedBook, setSelectedBook] = useState(null);
 
@@ -59,29 +61,11 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
         throw new Error(`Error: ${response.status}`);
       }
       const data = await response.json();
-      console.log(search);
-      console.log(data);
       setBooks(data.items);
-
-      //   const toRead = data.records.map((toRead) => {
-      //     return {
-      //       id: toRead.id,
-      //       Name: toRead.fields.Name,
-      //       Author: toRead.fields.Author,
-      //     };
-      //   });
-
-      // setBooks(toRead);
-
-      //   setIsLoading(false);
     } catch (error) {
       console.log(error.message);
     }
   };
-
-  React.useEffect(() => {
-    fetchBook(search);
-  }, [search]);
 
   const removeToRead = async (id) => {
     console.log(id);
@@ -112,23 +96,20 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
     <div>
       {isAddingBook ? (
         <div>
-          <input
-            type="text"
-            placeholder="Search Books..."
-            onChange={(event) => setSearch(event.target.value)}
-          />
+          <SearchBookForm fetchBook={fetchBook} />
           <FetchList books={books} setSelectedBook={setSelectedBook} />
         </div>
       ) : (
         <>
           <h1>{tableBooksName}</h1>
-          <button
+          <Button
             type="submit"
             title="add new book"
             onClick={() => setIsAddingBook(true)}
           >
             Add new book
-          </button>
+          </Button>
+
           {isLoading ? (
             <p>Loading ...</p>
           ) : toReadList.length ? (

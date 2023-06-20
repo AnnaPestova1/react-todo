@@ -2,6 +2,7 @@ import React from "react";
 import { ReactComponent as Remove } from "../../../img/delete_outline_black_24dp.svg";
 import style from "./TodoListItem.module.css";
 import PropTypes from "prop-types";
+import Button from "../../Button";
 
 /*component that add the title from submitted todo value in the list and remove item button*/
 function TodoListItem({ todo, onRemoveTodo, onEditTodo }) {
@@ -10,14 +11,14 @@ function TodoListItem({ todo, onRemoveTodo, onEditTodo }) {
       <span className={style.todoTitle}>{todo.title}</span>
       <span className={style.todoDate}>{todo.createdDate}</span>
       <span>
-        <button
+        <Button
           type="button"
           title="edit item"
           onClick={() => onEditTodo(todo.id)}
         >
           Edit
-        </button>
-        <button
+        </Button>
+        <Button
           type="button"
           title="remove item"
           onClick={function () {
@@ -26,7 +27,7 @@ function TodoListItem({ todo, onRemoveTodo, onEditTodo }) {
           className={style.RemoveButton}
         >
           <Remove />
-        </button>
+        </Button>
       </span>
     </li>
   );

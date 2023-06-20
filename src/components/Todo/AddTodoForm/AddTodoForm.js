@@ -3,6 +3,7 @@ import InputWithLabel from "../../InputWithLabel";
 import { ReactComponent as Add } from "../../../img/add_black_24dp.svg";
 import style from "./AddTodoForm.module.css";
 import PropTypes from "prop-types";
+import Button from "../../Button";
 
 /* component that takes user's input and sets new todo title*/
 function AddTodoForm({ onAddTodo }) {
@@ -33,14 +34,15 @@ function AddTodoForm({ onAddTodo }) {
     <form onSubmit={handleAddTodo} className={style.AddTodoForm}>
       <InputWithLabel
         id="todoTitle"
+        placeholder="add to do"
         value={todoTitle}
         onInputChange={handleTitleChange}
       >
         <strong>Title:</strong>
       </InputWithLabel>
-      <button type="submit" title="add to do">
+      <Button type="submit" title="add to do">
         <Add />
-      </button>
+      </Button>
     </form>
   );
 }

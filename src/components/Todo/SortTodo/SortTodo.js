@@ -1,44 +1,45 @@
 import React from "react";
 import style from "./SortTodo.module.css";
+import Button from "../../Button";
 
 function SortTodo({ sortList }) {
   return (
     <div className={style.SortTodo}>
       <span>
-        <button
+        <Button
           type="button"
           onClick={() => {
             sortList("titleAsc");
           }}
         >
           Sort by title (A-Z)
-        </button>
-        <button
+        </Button>
+        <Button
           type="button"
           onClick={() => {
             sortList("dateAsc");
           }}
         >
           Sort by date(asc)
-        </button>
+        </Button>
       </span>
       <span>
-        <button
+        <Button
           type="button"
           onClick={() => {
             sortList("titleDesc");
           }}
         >
           Sort by title (Z-A)
-        </button>
-        <button
+        </Button>
+        <Button
           type="button"
           onClick={() => {
             sortList("dateDesc");
           }}
         >
           Sort by date(desc)
-        </button>
+        </Button>
       </span>
     </div>
   );

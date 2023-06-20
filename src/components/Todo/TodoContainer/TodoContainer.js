@@ -5,6 +5,7 @@ import style from "./TodoContainer.module.css";
 import PropTypes from "prop-types";
 import InputWithLabel from "../../InputWithLabel";
 import SortTodo from "../SortTodo/SortTodo";
+import Button from "../../Button";
 
 /*The component that works with API and adds, deletes and fetches the data from there */
 
@@ -340,10 +341,10 @@ function TodoContainer({ tableName, baseName, apiKey }) {
             >
               <strong>Title:</strong>
             </InputWithLabel>
-            <button type="submit" title="edit to do">
+            <Button type="submit" title="edit to do">
               Submit
-            </button>
-            <button onClick={() => setIsEditing(false)}>Cancel</button>
+            </Button>
+            <Button onClick={() => setIsEditing(false)}>Cancel</Button>
           </form>
         </>
       ) : (
