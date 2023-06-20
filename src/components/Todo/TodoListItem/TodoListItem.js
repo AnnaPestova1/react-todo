@@ -1,5 +1,5 @@
 import React from "react";
-import { ReactComponent as Remove } from "../../img/delete_outline_black_24dp.svg";
+import { ReactComponent as Remove } from "../../../img/delete_outline_black_24dp.svg";
 import style from "./TodoListItem.module.css";
 import PropTypes from "prop-types";
 
@@ -10,7 +10,13 @@ function TodoListItem({ todo, onRemoveTodo, onEditTodo }) {
       <span className={style.todoTitle}>{todo.title}</span>
       <span className={style.todoDate}>{todo.createdDate}</span>
       <span>
-        <button onClick={() => onEditTodo(todo.id)}>Edit</button>
+        <button
+          type="button"
+          title="edit item"
+          onClick={() => onEditTodo(todo.id)}
+        >
+          Edit
+        </button>
         <button
           type="button"
           title="remove item"

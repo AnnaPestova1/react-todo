@@ -1,6 +1,6 @@
 import React from "react";
 import InputWithLabel from "../InputWithLabel";
-import { ReactComponent as Add } from "../../img/add_black_24dp.svg";
+import { ReactComponent as Add } from "../../../img/add_black_24dp.svg";
 import style from "./AddTodoForm.module.css";
 import PropTypes from "prop-types";
 

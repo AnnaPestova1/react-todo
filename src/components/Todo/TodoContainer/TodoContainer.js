@@ -132,6 +132,7 @@ function TodoContainer({ tableName, baseName, apiKey }) {
         throw new Error(`Error: ${response.status}`);
       }
       const data = await response.json();
+      console.log(url);
       console.log(data);
 
       const todos = data.records.map((todo) => {

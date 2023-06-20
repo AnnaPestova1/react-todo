@@ -1,10 +1,13 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import TodoContainer from "../TodoContainer/TodoContainer";
+import TodoContainer from "../../components/Todo/TodoContainer/TodoContainer";
+import ToReadContainer from "../ToRead/ToReadContainer/ToReadContainer";
 import style from "./App.module.css";
 import NavBar from "../NavBar/NavBar";
+import NotFound from "../NotFound/NotFound";
 
 const tableName = process.env.REACT_APP_TABLE_NAME;
+const tableBooksName = process.env.REACT_APP_TABLE_NAME_BOOKS;
 const baseName = process.env.REACT_APP_AIRTABLE_BASE_ID;
 const apiKey = process.env.REACT_APP_AIRTABLE_API_KEY;
 
@@ -23,8 +26,9 @@ function App() {
       <BrowserRouter>
         <NavBar theme={theme} handleToggle={handleToggle} />
         <Routes>
+          <Route path="/about" element={<h1>About</h1>} />
           <Route
-            path="/home"
+            path="/todo"
             element={
               <TodoContainer
                 tableName={tableName}
@@ -33,8 +37,18 @@ function App() {
               />
             }
           />
-          <Route path="/new" element={<h1>New Todo List</h1>} />
-          <Route path="/*" element={<Navigate replace to="/home" />} />
+          <Route
+            path="/toread"
+            element={
+              <ToReadContainer
+                tableBooksName={tableBooksName}
+                baseName={baseName}
+                apiKey={apiKey}
+              />
+            }
+          />
+          <Route path="/*" element={<Navigate to="/404" />} />
+          <Route path="/404" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </div>

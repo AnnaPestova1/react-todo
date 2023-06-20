@@ -26,10 +26,13 @@ function NavBar({ theme, handleToggle }) {
           {showMenu ? (
             <ul className={style.MobileMenuLinks}>
               <li>
-                <Link to="/home">Home</Link>
+                <Link to="/about">About</Link>
               </li>
               <li>
-                <Link to="/new">Todo</Link>
+                <Link to="/todo">Todo</Link>
+              </li>
+              <li>
+                <Link to="/toread">To Read</Link>
               </li>
             </ul>
           ) : (
@@ -40,8 +43,9 @@ function NavBar({ theme, handleToggle }) {
         </div>
       ) : (
         <>
-          <Link to="/home">Home</Link>
-          <Link to="/new">Todo</Link>
+          <Link to="/about">About</Link>
+          <Link to="/todo">Todo</Link>
+          <Link to="/toread">To Read</Link>
         </>
       )}
       <LightDarkMode theme={theme} handleToggle={handleToggle} />
