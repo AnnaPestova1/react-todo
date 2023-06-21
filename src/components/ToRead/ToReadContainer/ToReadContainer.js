@@ -8,9 +8,11 @@ import PropTypes from "prop-types";
 /*The component that works with API and adds, deletes and fetches the data from there */
 
 function ToReadContainer({ tableBooksName, baseName, apiKey }) {
+  //books from Airtable
   const [toReadList, setToReadList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isAddingBook, setIsAddingBook] = useState(false);
+  //books from Google Books
   const [books, setBooks] = useState([]);
 
   //fetch books from Airtable
@@ -47,10 +49,14 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
     fetchData(tableBooksName);
   }, [tableBooksName]);
 
+  // fetch books from Google Books
   const fetchBook = async (search) => {
     const url = `https://www.googleapis.com/books/v1/volumes?q=${search}`;
+    const options = {
+      method: "GET",
+    };
     try {
-      const response = await fetch(url);
+      const response = await fetch(url, options);
       if (!response.ok) {
         throw new Error(`Error: ${response.status}`);
       }
@@ -61,6 +67,7 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
     }
   };
 
+  //add book from Google Books to Airtable
   const addToRead = async (book) => {
     console.log(book);
     const postBook = {
@@ -86,11 +93,7 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
       if (!response.ok) {
         throw new Error(`Error has ocurred: ${response.status}`);
       }
-
       const toRead = await response.json();
-      console.log(toRead);
-
-      // const d = new Date(todo.createdTime);
 
       const newBook = {
         id: toRead.id,
@@ -98,14 +101,14 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
         Author: toRead.fields.Author,
       };
       setToReadList((oldToReadList) => [...oldToReadList, newBook]);
-
       setIsAddingBook(false);
+      setBooks([]);
     } catch (error) {
       console.log(error.message);
       return null;
     }
   };
-
+  //remove book from Airtable
   const removeToRead = async (id) => {
     console.log(id);
     const url = `https://api.airtable.com/v0/${baseName}/${tableBooksName}/${id}`;

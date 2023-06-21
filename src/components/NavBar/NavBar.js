@@ -17,7 +17,7 @@ function NavBar({ theme, handleToggle }) {
   }, []);
 
   return (
-    <div className={style.NavBar}>
+    <header>
       {screenSize < 767 ? (
         <div
           className={style.MobileMenu}
@@ -49,7 +49,7 @@ function NavBar({ theme, handleToggle }) {
         </>
       )}
       <LightDarkMode theme={theme} handleToggle={handleToggle} />
-    </div>
+    </header>
   );
 }
 
