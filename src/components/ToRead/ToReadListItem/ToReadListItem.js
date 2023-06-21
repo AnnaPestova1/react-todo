@@ -9,7 +9,7 @@ function ToReadListItem({ toRead, onRemoveToRead }) {
   return (
     <li>
       <span>
-        {toRead.Name} by {toRead.Author}
+        {toRead.Name} {toRead.Author}
       </span>
       <span>
         <Button

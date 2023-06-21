@@ -4,7 +4,11 @@ import FetchList from "../FetchList/FetchList";
 import SearchBookForm from "../SearchBookForm/SearchBookForm";
 import Button from "../../Button";
 import PropTypes from "prop-types";
+import Pagination from "../Pagination/Pagination";
 
+// const getPageCount = (totalCount, limit) => {
+//   return Math.cell(totalCount / limit);
+// };
 /*The component that works with API and adds, deletes and fetches the data from there */
 
 function ToReadContainer({ tableBooksName, baseName, apiKey }) {
@@ -12,8 +16,15 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
   const [toReadList, setToReadList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isAddingBook, setIsAddingBook] = useState(false);
+  const [search, setSearch] = useState("");
   //books from Google Books
   const [books, setBooks] = useState([]);
+  //amount of loading pages from Google
+  const [totalPages, setTotalPages] = useState(0);
+  //showing page from Google
+  const [page, setPage] = useState(1);
+  //limit books per page from Google
+  const limit = 10;
 
   //fetch books from Airtable
   const fetchData = async (tableBooksName) => {
@@ -50,8 +61,10 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
   }, [tableBooksName]);
 
   // fetch books from Google Books
-  const fetchBook = async (search) => {
-    const url = `https://www.googleapis.com/books/v1/volumes?q=${search}`;
+  const fetchBook = async (search, page, limit) => {
+    const startIndex = (page - 1) * limit;
+    console.log(page);
+    const url = `https://www.googleapis.com/books/v1/volumes?q=${search}&&startIndex=${startIndex}&&maxResult=${limit}`;
     const options = {
       method: "GET",
     };
@@ -60,12 +73,22 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
       if (!response.ok) {
         throw new Error(`Error: ${response.status}`);
       }
+      console.log(response);
       const data = await response.json();
+      console.log(data);
       setBooks(data.items);
+      const totalCount = data.totalItems;
+      console.log(totalCount);
+      setTotalPages(Math.ceil(totalCount / limit));
     } catch (error) {
       console.log(error.message);
     }
   };
+
+  React.useEffect(() => {
+    fetchBook(search, page, limit);
+  }, [page]);
+  console.log(totalPages);
 
   //add book from Google Books to Airtable
   const addToRead = async (book) => {
@@ -74,7 +97,9 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
       fields: {
         // id: book.id,
         Name: book.volumeInfo.title,
-        Author: book.volumeInfo.authors.join(", "),
+        Author: book.volumeInfo.authors
+          ? book.volumeInfo.authors.join(", ")
+          : "",
       },
     };
     console.log(postBook);
@@ -103,6 +128,7 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
       setToReadList((oldToReadList) => [...oldToReadList, newBook]);
       setIsAddingBook(false);
       setBooks([]);
+      setSearch("");
     } catch (error) {
       console.log(error.message);
       return null;
@@ -138,8 +164,21 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
     <div>
       {isAddingBook ? (
         <div>
-          <SearchBookForm fetchBook={fetchBook} />
-          <FetchList books={books} setBooks={setBooks} addToRead={addToRead} />
+          <SearchBookForm
+            fetchBook={fetchBook}
+            page={page}
+            limit={limit}
+            search={search}
+            setSearch={setSearch}
+          />
+          <FetchList
+            books={books}
+            setBooks={setBooks}
+            addToRead={addToRead}
+            fetchBook={fetchBook}
+            totalPages={totalPages}
+            setPage={setPage}
+          />
         </div>
       ) : (
         <>

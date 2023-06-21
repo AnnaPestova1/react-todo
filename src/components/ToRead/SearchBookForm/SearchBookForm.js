@@ -4,8 +4,8 @@ import Button from "../../Button";
 import PropTypes from "prop-types";
 import { ReactComponent as Add } from "../../../img/add_black_24dp.svg";
 
-function SearchBookForm({ fetchBook }) {
-  const [search, setSearch] = useState("");
+function SearchBookForm({ fetchBook, page, limit, search, setSearch }) {
+  // const [search, setSearch] = useState("");
 
   function handleBookSearch(event) {
     console.log(event);
@@ -13,10 +13,11 @@ function SearchBookForm({ fetchBook }) {
     if (search === "") {
       return;
     }
+    console.log(page);
+    console.log(limit);
     console.log(search);
 
-    fetchBook(search);
-    setSearch("");
+    fetchBook(search, page, limit);
   }
 
   return (
