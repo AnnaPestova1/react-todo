@@ -192,7 +192,7 @@ function TodoContainer({ tableName, baseName, apiKey }) {
       }
 
       const todo = await response.json();
-
+      console.log(todo);
       const d = new Date(todo.createdTime);
 
       const date = d.toLocaleDateString("en-EN", {
