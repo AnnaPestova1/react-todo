@@ -6,20 +6,18 @@ import PropTypes from "prop-types";
 /*component that renders all todo items*/
 function TodoList({ todoList, onRemoveTodo, onEditTodo }) {
   return (
-    <>
-      <ul className={style.TodoListUl}>
-        {todoList.map(function (todo) {
-          return (
-            <TodoListItem
-              key={todo.id}
-              todo={todo}
-              onRemoveTodo={onRemoveTodo}
-              onEditTodo={onEditTodo}
-            ></TodoListItem>
-          );
-        })}
-      </ul>
-    </>
+    <ul className={style.TodoListUl}>
+      {todoList.map(function (todo) {
+        return (
+          <TodoListItem
+            key={todo.id}
+            todo={todo}
+            onRemoveTodo={onRemoveTodo}
+            onEditTodo={onEditTodo}
+          ></TodoListItem>
+        );
+      })}
+    </ul>
   );
 }
 TodoList.propTypes = {

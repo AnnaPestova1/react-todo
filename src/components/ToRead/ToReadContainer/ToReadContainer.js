@@ -97,7 +97,7 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
         Name: toRead.fields.Name,
         Author: toRead.fields.Author,
       };
-      setBooks((books) => [...books, newBook]);
+      setToReadList((oldToReadList) => [...oldToReadList, newBook]);
 
       setIsAddingBook(false);
     } catch (error) {
@@ -166,9 +166,9 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
     </div>
   );
 }
-// ToReadContainer.propTypes = {
-//   tableBooksName: PropTypes.string,
-//   baseName: PropTypes.string,
-//   apiKey: PropTypes.string,
-// };
+ToReadContainer.propTypes = {
+  tableBooksName: PropTypes.string,
+  baseName: PropTypes.string,
+  apiKey: PropTypes.string,
+};
 export default ToReadContainer;

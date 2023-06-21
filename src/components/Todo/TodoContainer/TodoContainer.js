@@ -208,7 +208,7 @@ function TodoContainer({ tableName, baseName, apiKey }) {
       };
       console.log(newTodo);
 
-      setTodoList((todoList) => [...todoList, newTodo]);
+      setTodoList((oldTodoList) => [...oldTodoList, newTodo]);
 
       sortList(sortDirection);
       console.log(sortDirection);
