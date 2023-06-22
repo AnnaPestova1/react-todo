@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "../../Button";
-import { ReactComponent as Add } from "../../../img/add_FILL0_wght400_GRAD0_opsz48.svg";
-import { ReactComponent as NoImage } from "../../../img/image_not_supported_FILL0_wght400_GRAD0_opsz48-2.svg";
+import { ReactComponent as Add } from "../../../img/add_black_24dp.svg";
+import { ReactComponent as NoImage } from "../../../img/image_not_supported_black_24dp.svg";
 import PropTypes from "prop-types";
 
 function FetchListItem({ book, addToRead }) {

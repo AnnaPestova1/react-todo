@@ -1,5 +1,5 @@
 import React from "react";
-import { ReactComponent as Remove } from "../../../img/delete_outline_black_24dp.svg";
+import { ReactComponent as Remove } from "../../../img/delete_black_24dp-2.svg";
 import style from "./TodoListItem.module.css";
 import PropTypes from "prop-types";
 import Button from "../../Button";

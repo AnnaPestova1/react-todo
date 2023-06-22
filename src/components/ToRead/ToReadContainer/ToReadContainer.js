@@ -3,6 +3,7 @@ import ToReadList from "../ToReadList/ToReadList";
 import FetchList from "../FetchList/FetchList";
 import SearchBookForm from "../SearchBookForm/SearchBookForm";
 import Button from "../../Button";
+import { ReactComponent as Close } from "../../../img/close_black_24dp.svg";
 import PropTypes from "prop-types";
 import Pagination from "../Pagination/Pagination";
 
@@ -86,7 +87,9 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
   };
 
   React.useEffect(() => {
-    fetchBook(search, page, limit);
+    if (isAddingBook === true) {
+      fetchBook(search, page, limit);
+    }
   }, [page]);
   console.log(totalPages);
 
@@ -170,7 +173,11 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
             limit={limit}
             search={search}
             setSearch={setSearch}
+            setIsAddingBook={setIsAddingBook}
+            setBooks={setBooks}
+            setTotalPages={setTotalPages}
           />
+
           <FetchList
             books={books}
             setBooks={setBooks}

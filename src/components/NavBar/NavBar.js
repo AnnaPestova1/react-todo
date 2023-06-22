@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import LightDarkMode from "../LightDarkMode/LightDarkMode";
 import { Link } from "react-router-dom";
-import { ReactComponent as Menu } from "../../img/menu_FILL0_wght400_GRAD0_opsz48.svg";
+import { ReactComponent as Menu } from "../../img/menu_black_24dp.svg";
 import style from "./NavBar.module.css";
 
 function NavBar({ theme, handleToggle }) {

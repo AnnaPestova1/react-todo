@@ -1,6 +1,6 @@
 import React from "react";
-import { ReactComponent as DarkMode } from "../../img/dark_mode_FILL0_wght400_GRAD0_opsz48.svg";
-import { ReactComponent as LightMode } from "../../img/light_mode_FILL0_wght400_GRAD0_opsz48.svg";
+import { ReactComponent as DarkMode } from "../../img/dark_mode_black_24dp.svg";
+import { ReactComponent as LightMode } from "../../img/light_mode_black_24dp-2.svg";
 import style from "./LightDarkMode.module.css";
 import Button from "../Button";
 
