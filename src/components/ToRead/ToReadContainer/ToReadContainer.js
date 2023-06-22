@@ -5,7 +5,7 @@ import SearchBookForm from "../SearchBookForm/SearchBookForm";
 import Button from "../../Button";
 import { ReactComponent as Close } from "../../../img/close_black_24dp.svg";
 import PropTypes from "prop-types";
-import Pagination from "../Pagination/Pagination";
+import style from "./ToReadContainer.module.css";
 
 // const getPageCount = (totalCount, limit) => {
 //   return Math.cell(totalCount / limit);
@@ -164,7 +164,7 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
   };
 
   return (
-    <div>
+    <div className={style.ToReadContainer}>
       {isAddingBook ? (
         <div>
           <SearchBookForm

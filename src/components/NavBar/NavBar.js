@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import LightDarkMode from "../LightDarkMode/LightDarkMode";
 import { Link } from "react-router-dom";
 import { ReactComponent as Menu } from "../../img/menu_black_24dp.svg";
+import { ReactComponent as Close } from "../../img/close_black_24dp.svg";
 import style from "./NavBar.module.css";
+import Button from "../Button";
 
 function NavBar({ theme, handleToggle }) {
   const [screenSize, setScreenSize] = useState(window.innerWidth);
@@ -19,7 +21,9 @@ function NavBar({ theme, handleToggle }) {
   return (
     <header>
       {screenSize < 767 ? (
-        <div
+        <Button
+          type="submit"
+          title="open menu"
           className={style.MobileMenu}
           onClick={() => setShowMenu((showMenu) => !showMenu)}
         >
@@ -34,13 +38,18 @@ function NavBar({ theme, handleToggle }) {
               <li>
                 <Link to="/toread">To Read</Link>
               </li>
+              <li>
+                <div onClick={() => setShowMenu(true)}>
+                  <Close />
+                </div>
+              </li>
             </ul>
           ) : (
             <div>
               <Menu />
             </div>
           )}
-        </div>
+        </Button>
       ) : (
         <>
           <Link to="/about">About</Link>

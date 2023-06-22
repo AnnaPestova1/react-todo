@@ -325,7 +325,7 @@ function TodoContainer({ tableName, baseName, apiKey }) {
   };
 
   return (
-    <div className={style.TodoTableName}>
+    <div className={style.TodoContainer}>
       <h1>{tableName}</h1>
       {isEditing ? (
         <>

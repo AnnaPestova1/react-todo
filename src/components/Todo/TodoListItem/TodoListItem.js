@@ -3,6 +3,7 @@ import { ReactComponent as Remove } from "../../../img/delete_black_24dp-2.svg";
 import style from "./TodoListItem.module.css";
 import PropTypes from "prop-types";
 import Button from "../../Button";
+import { ReactComponent as Edit } from "../../../img/edit_black_24dp.svg";
 
 /*component that add the title from submitted todo value in the list and remove item button*/
 function TodoListItem({ todo, onRemoveTodo, onEditTodo }) {
@@ -16,7 +17,7 @@ function TodoListItem({ todo, onRemoveTodo, onEditTodo }) {
           title="edit item"
           onClick={() => onEditTodo(todo.id)}
         >
-          Edit
+          <Edit />
         </Button>
         <Button
           type="button"
