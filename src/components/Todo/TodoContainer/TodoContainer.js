@@ -16,7 +16,14 @@ function TodoContainer({ tableName, baseName, apiKey }) {
   const [sortDirection, setSortDirection] = React.useState("");
   const [isLoading, setIsLoading] = React.useState(true);
   // functions to sort todos
-
+  React.useEffect(() => {
+    if (window.location.pathname === "/todo") {
+      // document.body.style.backgroundColor = "blue";
+      document.body.style.backgroundImage = "url('./IMG_4835.jpeg')"; // double check my quotes
+    }
+  }, []);
+  console.log(document.body.style);
+  console.log(window.location.pathname);
   const onSortByTitle = () => {
     function sortData(a, b) {
       if (a.title > b.title) {

@@ -1,4 +1,4 @@
-header {
+.NavBar {
     display: flex;
     align-items: center;
     background-color: rgba(0, 0, 0, .01);
@@ -14,7 +14,7 @@ header {
 
 }
 
-header a {
+.NavBar a {
     text-decoration: none;
     padding: 0 10px;
     color: inherit;

@@ -1,5 +1,8 @@
 .TodoContainer {
-    background: url('../../../img/IMG_4835.jpeg') center/ cover;
+    /* background: url('../../../img/IMG_4835.jpeg') center/ cover; */
+    /* height: 100vh;
+    width: 100vw; */
+    overflow: auto;
     padding: 20px;
     margin: 25px;
     text-align: center
@@ -12,3 +15,15 @@
 .GoodJob {
     text-align: center
 }
+
+/* @media (min-width: 768px) and (max-width: 991px) {
+    .TodoContainer {
+        background: url('../../../img/IMG_4835.jpeg') left / cover;
+    }
+}
+
+@media (max-width: 767px) {
+    .TodoContainer {
+        background: url('../../../img/IMG_4835.jpeg') 25% 75% / cover;
+    }
+} */

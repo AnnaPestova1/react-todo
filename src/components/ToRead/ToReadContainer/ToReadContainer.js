@@ -26,7 +26,14 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
   const [page, setPage] = useState(1);
   //limit books per page from Google
   const limit = 10;
-
+  React.useEffect(() => {
+    if (window.location.pathname === "/toread") {
+      //document.body.style.backgroundColor = "red";
+      document.body.style.backgroundImage = "url('./IMG_4911.jpeg')";
+    }
+  }, []);
+  console.log(document.body.style.backgroundImage);
+  console.log(window.location.pathname);
   //fetch books from Airtable
   const fetchData = async (tableBooksName) => {
     const url = `https://api.airtable.com/v0/${baseName}/${tableBooksName}`;
@@ -90,7 +97,7 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
     if (isAddingBook === true) {
       fetchBook(search, page, limit);
     }
-  }, [page]);
+  }, [isAddingBook, page]);
   console.log(totalPages);
 
   //add book from Google Books to Airtable

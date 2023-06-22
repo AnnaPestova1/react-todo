@@ -19,7 +19,7 @@ function NavBar({ theme, handleToggle }) {
   }, []);
 
   return (
-    <header>
+    <div className={style.NavBar}>
       {screenSize < 767 ? (
         <Button
           type="submit"
@@ -58,7 +58,7 @@ function NavBar({ theme, handleToggle }) {
         </>
       )}
       <LightDarkMode theme={theme} handleToggle={handleToggle} />
-    </header>
+    </div>
   );
 }
 
