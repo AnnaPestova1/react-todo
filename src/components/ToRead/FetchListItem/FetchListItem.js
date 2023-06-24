@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../../Button";
+import Button from "../../Button/Button";
 import { ReactComponent as Add } from "../../../img/add_black_24dp.svg";
 import { ReactComponent as NoImage } from "../../../img/image_not_supported_black_24dp.svg";
 import PropTypes from "prop-types";

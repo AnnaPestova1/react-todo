@@ -2,15 +2,15 @@ import React from "react";
 import { ReactComponent as Remove } from "../../../img/delete_black_24dp-2.svg";
 import style from "./TodoListItem.module.css";
 import PropTypes from "prop-types";
-import Button from "../../Button";
+import Button from "../../Button/Button";
 import { ReactComponent as Edit } from "../../../img/edit_black_24dp.svg";
 
 /*component that add the title from submitted todo value in the list and remove item button*/
 function TodoListItem({ todo, onRemoveTodo, onEditTodo }) {
   return (
     <li className={style.ListItem}>
-      <span className={style.todoTitle}>{todo.title}</span>
-      <span className={style.todoDate}>{todo.createdDate}</span>
+      <span className={style.TodoTitle}>{todo.title}</span>
+      <span className={style.TodoDate}>{todo.createdDate}</span>
       <span>
         <Button
           type="button"

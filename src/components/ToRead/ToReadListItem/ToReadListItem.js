@@ -1,8 +1,8 @@
 import React from "react";
 import { ReactComponent as Remove } from "../../../img/delete_black_24dp-2.svg";
-// import style from "./TodoListItem.module.css";
+import style from "./ToReadListItem.module.css";
 import PropTypes from "prop-types";
-import Button from "../../Button";
+import Button from "../../Button/Button";
 
 /*component that add the title from submitted todo value in the list and remove item button*/
 function ToReadListItem({ toRead, onRemoveToRead }) {

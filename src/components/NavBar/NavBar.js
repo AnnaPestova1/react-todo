@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import LightDarkMode from "../LightDarkMode/LightDarkMode";
 import { Link } from "react-router-dom";
+import { ReactComponent as Logo } from "../../img/CustomLogo.svg";
 import { ReactComponent as Menu } from "../../img/menu_black_24dp.svg";
 import { ReactComponent as Close } from "../../img/close_black_24dp.svg";
 import style from "./NavBar.module.css";
-import Button from "../Button";
+import Button from "../Button/Button";
 
 function NavBar({ theme, handleToggle }) {
   const [screenSize, setScreenSize] = useState(window.innerWidth);
@@ -20,14 +21,21 @@ function NavBar({ theme, handleToggle }) {
 
   return (
     <div className={style.NavBar}>
+      <div className={style.Logo}>
+        <Logo />
+      </div>
       {screenSize < 767 ? (
-        <Button
-          type="submit"
-          title="open menu"
-          className={style.MobileMenu}
-          onClick={() => setShowMenu((showMenu) => !showMenu)}
-        >
-          {showMenu ? (
+        <>
+          {!showMenu ? (
+            <Button
+              type="submit"
+              title="open menu"
+              className={style.MobileMenu}
+              onClick={() => setShowMenu((showMenu) => !showMenu)}
+            >
+              <Menu />
+            </Button>
+          ) : (
             <ul className={style.MobileMenuLinks}>
               <li>
                 <Link to="/about">About</Link>
@@ -39,23 +47,19 @@ function NavBar({ theme, handleToggle }) {
                 <Link to="/toread">To Read</Link>
               </li>
               <li>
-                <div onClick={() => setShowMenu(true)}>
+                <div onClick={() => setShowMenu(false)}>
                   <Close />
                 </div>
               </li>
             </ul>
-          ) : (
-            <div>
-              <Menu />
-            </div>
           )}
-        </Button>
+        </>
       ) : (
-        <>
+        <div className="style.FullSizeNavBar">
           <Link to="/about">About</Link>
           <Link to="/todo">Todo</Link>
           <Link to="/toread">To Read</Link>
-        </>
+        </div>
       )}
       <LightDarkMode theme={theme} handleToggle={handleToggle} />
     </div>

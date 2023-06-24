@@ -3,7 +3,7 @@ import InputWithLabel from "../../InputWithLabel";
 import { ReactComponent as Add } from "../../../img/add_black_24dp.svg";
 import style from "./AddTodoForm.module.css";
 import PropTypes from "prop-types";
-import Button from "../../Button";
+import Button from "../../Button/Button";
 
 /* component that takes user's input and sets new todo title*/
 function AddTodoForm({ onAddTodo }) {

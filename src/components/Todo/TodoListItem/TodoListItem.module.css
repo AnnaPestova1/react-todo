@@ -1,20 +1,102 @@
 .ListItem {
-    padding: 5px;
+    position: relative;
+    display: flex;
+    padding: 2px;
     margin: 3px;
-    text-align: center;
+    background-color: rgba(0, 0, 0, .02);
+    min-width: 75%;
+    align-items: center;
+    height: 50px;
+    /* height: 30px; */
+
+    /* backdrop-filter: blur(4px); */
+
+    text-decoration: none;
+    border-radius: .3em;
+    /* transition: .3s ease-out; */
+    /* display: grid;
+    grid-template-columns: 180px 180px;
+    width: 360px;
+    margin-left: 0;
+    padding-left: 0;
+    border: 1px solid rgb(0, 0, 0);
+    list-style-type: none; */
+    /* padding: 5px;
+    margin: 3px;
+    text-align: center; */
     /* color: rgb(76, 6, 155); */
 }
 
-.todoTitle,
-.todoDate {
-    padding: 10px;
+.ListItem li {
+    /* width: 180px;
+    border: 1px solid rgb(0, 0, 0);
+    box-sizing: border-box; */
 }
 
-.todoDate {
-    font-size: 15px;
+.TodoTitle,
+.TodoDate {
+
+    display: block;
+    padding: 10px;
+
+}
+
+.TodoTitle {
+    flex-grow: 1;
+}
+
+.TodoDate {
+
+    font-size: 12px;
 }
 
 .RemoveButton {
     width: auto;
 
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .ListItem {
+        /* position: relative;
+    display: flex;
+    padding: 2px;
+    margin: 3px;
+    background-color: rgba(0, 0, 0, .02); */
+        min-width: 100%;
+        /* align-items: center;
+        height: 50px;
+        height: 30px;
+
+        backdrop-filter: blur(4px);
+
+        text-decoration: none;
+        border-radius: .3em;
+        transition: .3s ease-out;
+        display: grid;
+        grid-template-columns: 180px 180px;
+        width: 360px;
+        margin-left: 0;
+        padding-left: 0;
+        border: 1px solid rgb(0, 0, 0);
+        list-style-type: none;
+        padding: 5px;
+        margin: 3px;
+        text-align: center;
+        color: rgb(76, 6, 155); */
+    }
+
+}
+
+@media (max-width: 767px) {
+    .ListItem {
+        font-size: 15px;
+        /* display: flex;
+        flex-wrap: wrap; */
+        display: grid;
+        grid-auto-flow: dense;
+        /* grid-template-rows: min-content; */
+        grid-template-columns: 70% 30%;
+        /* min-width: 100%; */
+        height: 100px;
+    }
 }

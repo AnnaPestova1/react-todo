@@ -8,7 +8,7 @@ const Pagination = ({ totalPages, setPage }) => {
   const changePage = (currentPage) => {
     setPage(currentPage);
   };
-  console.log(setPage);
+  // console.log(setPage);
   return (
     <>
       {pages.map((p) => (

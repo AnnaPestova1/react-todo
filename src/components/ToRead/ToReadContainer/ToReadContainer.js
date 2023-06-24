@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ToReadList from "../ToReadList/ToReadList";
 import FetchList from "../FetchList/FetchList";
 import SearchBookForm from "../SearchBookForm/SearchBookForm";
-import Button from "../../Button";
+import Button from "../../Button/Button";
 import { ReactComponent as Close } from "../../../img/close_black_24dp.svg";
 import PropTypes from "prop-types";
 import style from "./ToReadContainer.module.css";
@@ -30,10 +30,11 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
     if (window.location.pathname === "/toread") {
       //document.body.style.backgroundColor = "red";
       document.body.style.backgroundImage = "url('./IMG_4911.jpeg')";
+      document.body.style.backgroundSize = "cover";
+      document.body.style.backgroundPosition = "center";
     }
   }, []);
-  console.log(document.body.style.backgroundImage);
-  console.log(window.location.pathname);
+
   //fetch books from Airtable
   const fetchData = async (tableBooksName) => {
     const url = `https://api.airtable.com/v0/${baseName}/${tableBooksName}`;
@@ -98,7 +99,6 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
       fetchBook(search, page, limit);
     }
   }, [isAddingBook, page]);
-  console.log(totalPages);
 
   //add book from Google Books to Airtable
   const addToRead = async (book) => {
@@ -139,6 +139,7 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
       setIsAddingBook(false);
       setBooks([]);
       setSearch("");
+      setTotalPages(0);
     } catch (error) {
       console.log(error.message);
       return null;
@@ -196,7 +197,7 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
         </div>
       ) : (
         <>
-          <h1>{tableBooksName}</h1>
+          <h1 className={style.ToReadTitle}>{tableBooksName}</h1>
           <Button
             type="submit"
             title="add new book"
@@ -206,7 +207,7 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
           </Button>
 
           {isLoading ? (
-            <p>Loading ...</p>
+            <p className={style.Loading}>Loading ...</p>
           ) : toReadList.length ? (
             <>
               <ToReadList
@@ -215,7 +216,7 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
               />
             </>
           ) : (
-            <h2>You need more books!</h2>
+            <h2 className={style.MoreBooks}>You need more books!</h2>
           )}
         </>
       )}

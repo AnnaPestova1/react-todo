@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import InputWithLabel from "../../InputWithLabel";
-import Button from "../../Button";
+import Button from "../../Button/Button";
 import PropTypes from "prop-types";
 import { ReactComponent as Add } from "../../../img/add_black_24dp.svg";
 import { ReactComponent as Close } from "../../../img/close_black_24dp.svg";

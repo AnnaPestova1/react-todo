@@ -1,0 +1,19 @@
+.NotFound {
+    background: url('../../img/404.svg') center no-repeat;
+    height: 100vh;
+    width: auto;
+    overflow: hidden;
+}
+
+.Error {
+    font-size: 50px;
+    text-align: center;
+    color: rgb(116, 95, 139);
+    margin-top: 75px;
+}
+
+@media (max-width: 767px) {
+    .Error {
+        font-size: 35px;
+    }
+}

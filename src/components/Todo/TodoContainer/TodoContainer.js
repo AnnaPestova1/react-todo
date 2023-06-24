@@ -5,7 +5,7 @@ import style from "./TodoContainer.module.css";
 import PropTypes from "prop-types";
 import InputWithLabel from "../../InputWithLabel";
 import SortTodo from "../SortTodo/SortTodo";
-import Button from "../../Button";
+import Button from "../../Button/Button";
 
 /*The component that works with API and adds, deletes and fetches the data from there */
 
@@ -19,11 +19,12 @@ function TodoContainer({ tableName, baseName, apiKey }) {
   React.useEffect(() => {
     if (window.location.pathname === "/todo") {
       // document.body.style.backgroundColor = "blue";
-      document.body.style.backgroundImage = "url('./IMG_4835.jpeg')"; // double check my quotes
+      document.body.style.backgroundImage = "url('./IMG_4835.jpeg')";
+      document.body.style.backgroundSize = "cover";
+      document.body.style.backgroundRepeat = "no-repeat";
+      document.body.style.backgroundPosition = "left";
     }
   }, []);
-  console.log(document.body.style);
-  console.log(window.location.pathname);
   const onSortByTitle = () => {
     function sortData(a, b) {
       if (a.title > b.title) {
@@ -333,7 +334,7 @@ function TodoContainer({ tableName, baseName, apiKey }) {
 
   return (
     <div className={style.TodoContainer}>
-      <h1>{tableName}</h1>
+      <h1 className={style.TodoTitle}>{tableName}</h1>
       {isEditing ? (
         <>
           <form

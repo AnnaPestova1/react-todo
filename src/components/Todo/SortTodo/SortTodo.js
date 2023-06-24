@@ -1,11 +1,11 @@
 import React from "react";
 import style from "./SortTodo.module.css";
-import Button from "../../Button";
+import Button from "../../Button/Button";
 
 function SortTodo({ sortList }) {
   return (
     <div className={style.SortTodo}>
-      <span>
+      <span className={style.SortButton}>
         <Button
           type="button"
           onClick={() => {
@@ -23,7 +23,7 @@ function SortTodo({ sortList }) {
           Sort by date(asc)
         </Button>
       </span>
-      <span>
+      <span className={style.SortButton}>
         <Button
           type="button"
           onClick={() => {

@@ -1,14 +1,14 @@
 import React from "react";
 import ToReadListItem from "../ToReadListItem/ToReadListItem";
 // import TodoListItem from "../TodoListItem/TodoListItem";
-// import style from "./TodoList.module.css";
+import style from "./ToReadList.module.css";
 import PropTypes from "prop-types";
 
 /*component that renders all todo items*/
 function ToReadList({ toReadList, onRemoveToRead }) {
   return (
     <>
-      <ul>
+      <ul className={style.RoReadList}>
         {toReadList.map(function (toRead) {
           return (
             <ToReadListItem

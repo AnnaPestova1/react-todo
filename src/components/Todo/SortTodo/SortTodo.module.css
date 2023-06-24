@@ -6,3 +6,16 @@
     text-align: center;
     text-align-last: center;
 }
+
+.SortTodo span {
+    padding: 0;
+}
+
+.SortButton button {
+    font-size: 10px;
+    width: 100px;
+    margin: 0px 20px 0px 20px;
+
+
+    padding: 5px;
+}

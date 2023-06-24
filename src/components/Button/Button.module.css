@@ -1,0 +1,25 @@
+.AllButtons {
+    margin: 0 10px 0 10px;
+    background-color: rgb(215, 213, 222);
+    color: rgb(28, 3, 105);
+    font-size: 5px;
+    border-width: 1px;
+    border-radius: 5px;
+    padding: 3px;
+    cursor: pointer;
+}
+
+.AllButtons svg {
+    height: 20px;
+    width: 25px;
+    fill: rgb(28, 3, 105);
+}
+
+@media (max-width: 767px) {
+    .AllButtons svg {
+        height: 15px;
+        width: 20px;
+        fill: rgb(28, 3, 105);
+    }
+
+}

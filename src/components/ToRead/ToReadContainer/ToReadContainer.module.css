@@ -1,3 +1,17 @@
-/* .ToReadContainer {
-    background: url('../../../img/IMG_4911.jpeg') center/ cover;
-} */
+.ToReadContainer {
+    overflow: auto;
+    padding: 20px;
+    margin: 25px;
+}
+
+.ToReadTitle {
+    text-align: center
+}
+
+.Loading {
+    text-align: center
+}
+
+.MoreBooks {
+    text-align: center
+}
