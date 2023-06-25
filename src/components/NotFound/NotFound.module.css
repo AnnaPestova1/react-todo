@@ -1,8 +1,10 @@
 .NotFound {
     background: url('../../img/404.svg') center no-repeat;
-    height: 100vh;
+
+    padding-top: 100px;
     width: auto;
     overflow: hidden;
+    min-height: calc(100% - 150px);
 }
 
 .Error {

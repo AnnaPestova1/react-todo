@@ -95,7 +95,7 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
   };
 
   React.useEffect(() => {
-    if (isAddingBook === true) {
+    if (isAddingBook === true && search !== "") {
       fetchBook(search, page, limit);
     }
   }, [isAddingBook, page]);
@@ -196,15 +196,16 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
           />
         </div>
       ) : (
-        <>
+        <div>
           <h1 className={style.ToReadTitle}>{tableBooksName}</h1>
-          <Button
+          <button
+            className={style.AddNewBookButton}
             type="submit"
             title="add new book"
             onClick={() => setIsAddingBook(true)}
           >
             Add new book
-          </Button>
+          </button>
 
           {isLoading ? (
             <p className={style.Loading}>Loading ...</p>
@@ -218,7 +219,7 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
           ) : (
             <h2 className={style.MoreBooks}>You need more books!</h2>
           )}
-        </>
+        </div>
       )}
     </div>
   );

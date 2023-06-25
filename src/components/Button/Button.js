@@ -8,6 +8,7 @@ function Button({ type, title, onClick, children }) {
       className={style.AllButtons}
       type={type}
       title={title}
+      // style={style}
       onClick={onClick}
     >
       {children}

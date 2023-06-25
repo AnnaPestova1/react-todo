@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import InputWithLabel from "../../InputWithLabel";
 import Button from "../../Button/Button";
 import PropTypes from "prop-types";
-import { ReactComponent as Add } from "../../../img/add_black_24dp.svg";
+import style from "./SearchBookForm.module.css";
+import { ReactComponent as Search } from "../../../img/search_black_24dp.svg";
 import { ReactComponent as Close } from "../../../img/close_black_24dp.svg";
 
 function SearchBookForm({
@@ -31,7 +32,7 @@ function SearchBookForm({
   }
 
   return (
-    <>
+    <div className={style.SearchBookForm}>
       <form onSubmit={handleBookSearch}>
         <InputWithLabel
           id="search"
@@ -42,10 +43,10 @@ function SearchBookForm({
           <strong>Add book</strong>
         </InputWithLabel>
         <Button type="submit" title="add new book">
-          <Add />
+          <Search />
         </Button>
         <Button
-          type="submit"
+          type="button"
           title="close search form"
           onClick={() => {
             setIsAddingBook(false);
@@ -57,7 +58,7 @@ function SearchBookForm({
           <Close />
         </Button>
       </form>
-    </>
+    </div>
   );
 }
 SearchBookForm.propTypes = {

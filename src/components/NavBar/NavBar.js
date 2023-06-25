@@ -20,49 +20,51 @@ function NavBar({ theme, handleToggle }) {
   }, []);
 
   return (
-    <div className={style.NavBar}>
-      <div className={style.Logo}>
-        <Logo />
-      </div>
-      {screenSize < 767 ? (
-        <>
-          {!showMenu ? (
-            <Button
-              type="submit"
-              title="open menu"
-              className={style.MobileMenu}
-              onClick={() => setShowMenu((showMenu) => !showMenu)}
-            >
-              <Menu />
-            </Button>
-          ) : (
-            <ul className={style.MobileMenuLinks}>
-              <li>
-                <Link to="/about">About</Link>
-              </li>
-              <li>
-                <Link to="/todo">Todo</Link>
-              </li>
-              <li>
-                <Link to="/toread">To Read</Link>
-              </li>
-              <li>
-                <div onClick={() => setShowMenu(false)}>
-                  <Close />
-                </div>
-              </li>
-            </ul>
-          )}
-        </>
-      ) : (
-        <div className="style.FullSizeNavBar">
-          <Link to="/about">About</Link>
-          <Link to="/todo">Todo</Link>
-          <Link to="/toread">To Read</Link>
+    <header>
+      <div className={style.NavBar}>
+        <div className={style.Logo}>
+          <Logo />
         </div>
-      )}
-      <LightDarkMode theme={theme} handleToggle={handleToggle} />
-    </div>
+        {screenSize < 767 ? (
+          <>
+            {!showMenu ? (
+              <Button
+                type="submit"
+                title="open menu"
+                className={style.MobileMenu}
+                onClick={() => setShowMenu((showMenu) => !showMenu)}
+              >
+                <Menu />
+              </Button>
+            ) : (
+              <ul className={style.MobileMenuLinks}>
+                <li>
+                  <Link to="/about">About</Link>
+                </li>
+                <li>
+                  <Link to="/todo">Todo</Link>
+                </li>
+                <li>
+                  <Link to="/toread">To Read</Link>
+                </li>
+                <li>
+                  <div onClick={() => setShowMenu(false)}>
+                    <Close />
+                  </div>
+                </li>
+              </ul>
+            )}
+          </>
+        ) : (
+          <div className="style.FullSizeNavBar">
+            <Link to="/about">About</Link>
+            <Link to="/todo">Todo</Link>
+            <Link to="/toread">To Read</Link>
+          </div>
+        )}
+        <LightDarkMode theme={theme} handleToggle={handleToggle} />
+      </div>
+    </header>
   );
 }
 

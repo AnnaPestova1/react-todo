@@ -13,6 +13,7 @@ import style from "./App.module.css";
 import NavBar from "../NavBar/NavBar";
 import NotFound from "../NotFound/NotFound";
 import About from "../About/About";
+import Footer from "../Footer/Footer";
 
 const tableName = process.env.REACT_APP_TABLE_NAME;
 const tableBooksName = process.env.REACT_APP_TABLE_NAME_BOOKS;
@@ -84,6 +85,7 @@ function App() {
           <Route path="/*" element={<Navigate to="/404" />} />
           <Route path="/404" element={<NotFound />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </div>
   );

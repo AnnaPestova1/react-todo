@@ -1,4 +1,5 @@
 import React from "react";
+import style from "./About.module.css";
 
 function About() {
   React.useEffect(() => {
@@ -9,7 +10,12 @@ function About() {
       document.body.style.backgroundPosition = "center";
     }
   }, []);
-  return <div></div>;
+  return (
+    <div className={style.AboutPage}>
+      The ultimate productivity companion for managing your tasks and organizing
+      your reading list.
+    </div>
+  );
 }
 
 export default About;

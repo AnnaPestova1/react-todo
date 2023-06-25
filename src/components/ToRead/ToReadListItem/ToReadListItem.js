@@ -7,10 +7,9 @@ import Button from "../../Button/Button";
 /*component that add the title from submitted todo value in the list and remove item button*/
 function ToReadListItem({ toRead, onRemoveToRead }) {
   return (
-    <li>
-      <span>
-        {toRead.Name} {toRead.Author}
-      </span>
+    <li className={style.ReadListItem}>
+      <span className={style.BookName}>{toRead.Name}</span>
+      <span className={style.BookAuthor}>{toRead.Author}</span>
       <span>
         <Button
           type="button"

@@ -1,0 +1,18 @@
+.Links {
+
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-end;
+    padding: 10px;
+}
+
+.Links li {
+    list-style-type: none;
+}
+
+.Links svg {
+    font-size: 12px;
+    height: 20px;
+    width: auto;
+    fill: rgb(77, 55, 103);
+}

@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 function ToReadList({ toReadList, onRemoveToRead }) {
   return (
     <>
-      <ul className={style.RoReadList}>
+      <ul className={style.ToReadList}>
         {toReadList.map(function (toRead) {
           return (
             <ToReadListItem

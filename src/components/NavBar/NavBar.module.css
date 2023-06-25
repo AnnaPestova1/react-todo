@@ -7,10 +7,10 @@
     font-size: 20px;
     top: 0;
     margin-top: 0;
-    height: 35px;
     width: 100%;
-    position: sticky;
+    position: fixed;
     justify-content: space-between;
+    z-index: 1;
 
 }
 
@@ -22,7 +22,6 @@
 }
 
 .Logo {
-    padding-top: 80px;
     flex-grow: 1;
 
 }
