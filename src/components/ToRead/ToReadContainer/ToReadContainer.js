@@ -1,17 +1,11 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import ToReadList from "../ToReadList/ToReadList";
 import FetchList from "../FetchList/FetchList";
 import SearchBookForm from "../SearchBookForm/SearchBookForm";
-import Button from "../../Button/Button";
-import { ReactComponent as Close } from "../../../img/close_black_24dp.svg";
-import PropTypes from "prop-types";
 import style from "./ToReadContainer.module.css";
 
-// const getPageCount = (totalCount, limit) => {
-//   return Math.cell(totalCount / limit);
-// };
-/*The component that works with API and adds, deletes and fetches the data from there */
-
+//The component that works with API and get, add and delete books from Airtable and get books from Google
 function ToReadContainer({ tableBooksName, baseName, apiKey }) {
   //books from Airtable
   const [toReadList, setToReadList] = useState([]);
@@ -26,9 +20,10 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
   const [page, setPage] = useState(1);
   //limit books per page from Google
   const limit = 10;
+
+  //changing background for ToRead page
   React.useEffect(() => {
     if (window.location.pathname === "/toread") {
-      //document.body.style.backgroundColor = "red";
       document.body.style.backgroundImage = "url('./IMG_4911.jpeg')";
       document.body.style.backgroundSize = "cover";
       document.body.style.backgroundPosition = "center";
@@ -57,7 +52,6 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
           Author: toRead.fields.Author,
         };
       });
-
       setToReadList(toRead);
       setIsLoading(false);
     } catch (error) {
@@ -67,12 +61,12 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
 
   React.useEffect(() => {
     fetchData(tableBooksName);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tableBooksName]);
 
   // fetch books from Google Books
   const fetchBook = async (search, page, limit) => {
     const startIndex = (page - 1) * limit;
-    console.log(page);
     const url = `https://www.googleapis.com/books/v1/volumes?q=${search}&&startIndex=${startIndex}&&maxResult=${limit}`;
     const options = {
       method: "GET",
@@ -82,22 +76,21 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
       if (!response.ok) {
         throw new Error(`Error: ${response.status}`);
       }
-      console.log(response);
       const data = await response.json();
-      console.log(data);
       setBooks(data.items);
       const totalCount = data.totalItems;
-      console.log(totalCount);
       setTotalPages(Math.ceil(totalCount / limit));
     } catch (error) {
       console.log(error.message);
     }
   };
 
+  //workind with pagination
   React.useEffect(() => {
     if (isAddingBook === true && search !== "") {
       fetchBook(search, page, limit);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAddingBook, page]);
 
   //add book from Google Books to Airtable
@@ -105,16 +98,14 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
     console.log(book);
     const postBook = {
       fields: {
-        // id: book.id,
         Name: book.volumeInfo.title,
         Author: book.volumeInfo.authors
           ? book.volumeInfo.authors.join(", ")
-          : "",
+          : " ",
       },
     };
     console.log(postBook);
     const url = `https://api.airtable.com/v0/${baseName}/${tableBooksName}`;
-    console.log(url);
     const options = {
       method: "POST",
       headers: {
@@ -129,7 +120,6 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
         throw new Error(`Error has ocurred: ${response.status}`);
       }
       const toRead = await response.json();
-
       const newBook = {
         id: toRead.id,
         Name: toRead.fields.Name,
@@ -145,6 +135,7 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
       return null;
     }
   };
+
   //remove book from Airtable
   const removeToRead = async (id) => {
     console.log(id);
@@ -206,7 +197,6 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
           >
             Add new book
           </button>
-
           {isLoading ? (
             <p className={style.Loading}>Loading ...</p>
           ) : toReadList.length ? (
@@ -224,6 +214,7 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
     </div>
   );
 }
+
 ToReadContainer.propTypes = {
   tableBooksName: PropTypes.string,
   baseName: PropTypes.string,

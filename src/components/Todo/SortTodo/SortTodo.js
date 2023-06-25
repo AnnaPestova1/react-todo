@@ -1,6 +1,7 @@
 import React from "react";
-import style from "./SortTodo.module.css";
+import PropTypes from "prop-types";
 import Button from "../../Button/Button";
+import style from "./SortTodo.module.css";
 
 function SortTodo({ sortList }) {
   return (
@@ -45,4 +46,7 @@ function SortTodo({ sortList }) {
   );
 }
 
+SortTodo.propTypes = {
+  sortList: PropTypes.func,
+};
 export default SortTodo;

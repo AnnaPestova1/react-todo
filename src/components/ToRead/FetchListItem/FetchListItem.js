@@ -1,41 +1,55 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Button from "../../Button/Button";
 import { ReactComponent as Add } from "../../../img/add_black_24dp.svg";
 import { ReactComponent as NoImage } from "../../../img/image_not_supported_black_24dp.svg";
-import PropTypes from "prop-types";
+import style from "./FetchListItem.module.css";
 
+//Google search individual book layout
 function FetchListItem({ book, addToRead }) {
   return (
-    <li>
-      <span>
-        {book.volumeInfo?.imageLinks ? (
-          <img
-            src={book.volumeInfo.imageLinks.thumbnail}
-            alt={book.volumeInfo.title}
-          />
-        ) : (
-          <span>
-            <NoImage />
-          </span>
-        )}
-      </span>
+    <li className={style.FetchBookFromGoogle}>
+      <div className={style.BookNameAuthorImg}>
+        <span className={style.BookImg}>
+          {book.volumeInfo?.imageLinks ? (
+            <img
+              className={style.BookThumbnail}
+              src={book.volumeInfo.imageLinks.thumbnail}
+              alt={book.volumeInfo.title}
+            />
+          ) : (
+            <span>
+              <NoImage />
+            </span>
+          )}
+        </span>
 
-      <span>{book.volumeInfo?.title ? book.volumeInfo.title : ""}</span>
-      <span>
-        {book.volumeInfo?.authors
-          ? book.volumeInfo.authors && book.volumeInfo.authors.join(", ")
-          : ""}
-      </span>
-      <Button
-        type="submit"
-        title="add book in my list"
-        onClick={() => addToRead(book)}
-      >
-        <Add />
-      </Button>
+        <span className={style.BookName}>
+          {book.volumeInfo?.title ? book.volumeInfo.title : " "}
+        </span>
+        <span className={style.BookAuthor}>
+          {book.volumeInfo?.authors
+            ? book.volumeInfo.authors && book.volumeInfo.authors.join(", ")
+            : " "}
+        </span>
+        <Button
+          type="submit"
+          title="add book in my list"
+          onClick={() => addToRead(book)}
+          className={style.AddBookButton}
+        >
+          <Add />
+        </Button>
+      </div>
+      <div className={style.BookDescription}>
+        <p>
+          {book.volumeInfo?.description ? book.volumeInfo.description : " "}
+        </p>
+      </div>
     </li>
   );
 }
+
 FetchListItem.propTypes = {
   books: PropTypes.object,
   addToRead: PropTypes.func,

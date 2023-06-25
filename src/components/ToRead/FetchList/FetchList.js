@@ -1,9 +1,10 @@
 import React from "react";
+import PropTypes from "prop-types";
 import FetchListItem from "../FetchListItem/FetchListItem";
 import Pagination from "../Pagination/Pagination";
 import style from "./FetchList.module.css";
-import PropTypes from "prop-types";
 
+//Google search book results layout
 function FetchList({
   books,
   setBooks,
@@ -13,8 +14,8 @@ function FetchList({
   setPage,
 }) {
   return (
-    <>
-      <ul>
+    <div>
+      <ul className={style.FetchBookList}>
         {books.map((book) => (
           <FetchListItem
             key={book.id}
@@ -29,13 +30,16 @@ function FetchList({
         totalPages={totalPages}
         setPage={setPage}
       />
-    </>
+    </div>
   );
 }
 FetchList.propTypes = {
   books: PropTypes.array,
   setBooks: PropTypes.func,
   addToRead: PropTypes.func,
+  fetchBook: PropTypes.func,
+  totalPages: PropTypes.number,
+  setPage: PropTypes.func,
 };
 
 export default FetchList;

@@ -2,13 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import style from "./Button.module.css";
 
+//standart buttom in app
 function Button({ type, title, onClick, children }) {
   return (
     <button
       className={style.AllButtons}
       type={type}
       title={title}
-      // style={style}
       onClick={onClick}
     >
       {children}

@@ -1,21 +1,20 @@
 import React from "react";
+import PropTypes from "prop-types";
 import InputWithLabel from "../../InputWithLabel";
+import Button from "../../Button/Button";
 import { ReactComponent as Add } from "../../../img/add_black_24dp.svg";
 import style from "./AddTodoForm.module.css";
-import PropTypes from "prop-types";
-import Button from "../../Button/Button";
 
-/* component that takes user's input and sets new todo title*/
+// adding new todo in app
 function AddTodoForm({ onAddTodo }) {
   const [todoTitle, setTodoTitle] = React.useState("");
 
-  /* function that takes value from input as a parameter*/
   function handleTitleChange(event) {
     console.log(event);
     const newTodoTitle = event.target.value;
     setTodoTitle(newTodoTitle);
   }
-  /*function that work with value after submitting the form*/
+
   function handleAddTodo(event) {
     console.log(event);
     event.preventDefault();
@@ -23,12 +22,9 @@ function AddTodoForm({ onAddTodo }) {
       return;
     }
     console.log(todoTitle);
-    /*the onAddTodo callback prop to pass an Object*/
     onAddTodo(todoTitle);
-    /*reset the todoTitle state to an empty String*/
     setTodoTitle("");
   }
-  /* controlled form for adding new todo through InputWithLabel component and submit button*/
 
   return (
     <form onSubmit={handleAddTodo} className={style.AddTodoForm}>

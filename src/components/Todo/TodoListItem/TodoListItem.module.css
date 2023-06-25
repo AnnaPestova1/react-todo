@@ -12,13 +12,11 @@
     text-align: left;
 }
 
-
 .TodoTitle {
     flex-grow: 1;
 }
 
 .TodoDate {
-
     font-size: 12px;
 }
 
@@ -26,7 +24,6 @@
     .ListItem {
         width: 100%;
     }
-
 }
 
 @media (max-width: 767px) {

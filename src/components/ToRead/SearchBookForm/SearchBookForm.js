@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 import InputWithLabel from "../../InputWithLabel";
 import Button from "../../Button/Button";
-import PropTypes from "prop-types";
-import style from "./SearchBookForm.module.css";
 import { ReactComponent as Search } from "../../../img/search_black_24dp.svg";
 import { ReactComponent as Close } from "../../../img/close_black_24dp.svg";
+import style from "./SearchBookForm.module.css";
 
 function SearchBookForm({
   fetchBook,
@@ -16,18 +16,11 @@ function SearchBookForm({
   setBooks,
   setTotalPages,
 }) {
-  // const [search, setSearch] = useState("");
-
   function handleBookSearch(event) {
-    console.log(event);
     event.preventDefault();
     if (search === "") {
       return;
     }
-    console.log(page);
-    console.log(limit);
-    console.log(search);
-
     fetchBook(search, page, limit);
   }
 
@@ -63,5 +56,12 @@ function SearchBookForm({
 }
 SearchBookForm.propTypes = {
   fetchBook: PropTypes.func,
+  page: PropTypes.number,
+  limit: PropTypes.number,
+  search: PropTypes.string,
+  setSearch: PropTypes.func,
+  setIsAddingBook: PropTypes.func,
+  setBooks: PropTypes.func,
+  setTotalPages: PropTypes.func,
 };
 export default SearchBookForm;

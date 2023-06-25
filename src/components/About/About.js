@@ -2,6 +2,7 @@ import React from "react";
 import style from "./About.module.css";
 
 function About() {
+  //changing background for About page
   React.useEffect(() => {
     if (window.location.pathname === "/about") {
       document.body.style.backgroundImage =

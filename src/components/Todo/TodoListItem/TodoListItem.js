@@ -1,12 +1,11 @@
 import React from "react";
-import { ReactComponent as Remove } from "../../../img/delete_black_24dp-2.svg";
-import style from "./TodoListItem.module.css";
 import PropTypes from "prop-types";
 import Button from "../../Button/Button";
 import { ReactComponent as Edit } from "../../../img/edit_black_24dp.svg";
+import { ReactComponent as Remove } from "../../../img/delete_black_24dp-2.svg";
+import style from "./TodoListItem.module.css";
 
-/*component that add the title from submitted todo value in the list and remove item button*/
-function TodoListItem({ todo, onRemoveTodo, onEditTodo }) {
+function TodoListItem({ todo, onEditTodo, onRemoveTodo }) {
   return (
     <li className={style.ListItem}>
       <span className={style.TodoTitle}>{todo.title}</span>
@@ -33,10 +32,10 @@ function TodoListItem({ todo, onRemoveTodo, onEditTodo }) {
     </li>
   );
 }
+
 TodoListItem.propTypes = {
   todo: PropTypes.object,
-  onRemoveTodo: PropTypes.func,
   onEditTodo: PropTypes.func,
+  onRemoveTodo: PropTypes.func,
 };
-
 export default TodoListItem;

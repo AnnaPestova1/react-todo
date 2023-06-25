@@ -2,6 +2,7 @@ import React from "react";
 import style from "./NotFound.module.css";
 
 function NotFound() {
+  //changing background for 404 page
   React.useEffect(() => {
     if (window.location.pathname === "/404") {
       document.body.style.backgroundImage =

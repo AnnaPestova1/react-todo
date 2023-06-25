@@ -1,10 +1,12 @@
 import React from "react";
-import style from "./Footer.module.css";
 import { ReactComponent as GitHubLogo } from "../../img/github-mark.svg";
+import style from "./Footer.module.css";
 
 const Footer = () => {
+  //current year
   const today = new Date();
   const thisYear = today.getFullYear();
+
   return (
     <footer>
       <p className={style.CopyRight}>© Anna Pestova {thisYear}</p>

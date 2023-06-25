@@ -1,4 +1,6 @@
 import React from "react";
+import PropTypes from "prop-types";
+import style from "./Pagination.module.css";
 
 const Pagination = ({ totalPages, setPage }) => {
   let pages = [];
@@ -8,16 +10,19 @@ const Pagination = ({ totalPages, setPage }) => {
   const changePage = (currentPage) => {
     setPage(currentPage);
   };
-  // console.log(setPage);
   return (
-    <>
+    <div className={style.PaginationLink}>
       {pages.map((p) => (
         <span key={p} onClick={() => changePage(p)}>
           {p}
         </span>
       ))}
-    </>
+    </div>
   );
 };
 
+Pagination.propTypes = {
+  totalPages: PropTypes.number,
+  setPage: PropTypes.func,
+};
 export default Pagination;

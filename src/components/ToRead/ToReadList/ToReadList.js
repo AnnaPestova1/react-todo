@@ -1,10 +1,9 @@
 import React from "react";
-import ToReadListItem from "../ToReadListItem/ToReadListItem";
-// import TodoListItem from "../TodoListItem/TodoListItem";
-import style from "./ToReadList.module.css";
 import PropTypes from "prop-types";
+import ToReadListItem from "../ToReadListItem/ToReadListItem";
+import style from "./ToReadList.module.css";
 
-/*component that renders all todo items*/
+//component that renders book list
 function ToReadList({ toReadList, onRemoveToRead }) {
   return (
     <>
@@ -22,6 +21,7 @@ function ToReadList({ toReadList, onRemoveToRead }) {
     </>
   );
 }
+
 ToReadList.propTypes = {
   toReadList: PropTypes.array,
   onRemoveToRead: PropTypes.func,

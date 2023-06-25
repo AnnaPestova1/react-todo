@@ -1,53 +1,23 @@
-import React, { useState, useEffect } from "react";
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Navigate,
-  useLocation,
-} from "react-router-dom";
+import React from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import TodoContainer from "../../components/Todo/TodoContainer/TodoContainer";
 import ToReadContainer from "../ToRead/ToReadContainer/ToReadContainer";
-// import About from "../About/About";
-import style from "./App.module.css";
 import NavBar from "../NavBar/NavBar";
 import NotFound from "../NotFound/NotFound";
 import About from "../About/About";
 import Footer from "../Footer/Footer";
+import style from "./App.module.css";
 
+//consts for API in TodoContainer and in ToReadContainer
 const tableName = process.env.REACT_APP_TABLE_NAME;
 const tableBooksName = process.env.REACT_APP_TABLE_NAME_BOOKS;
 const baseName = process.env.REACT_APP_AIRTABLE_BASE_ID;
 const apiKey = process.env.REACT_APP_AIRTABLE_API_KEY;
 
-// const useReactPath = () => {
-//   const [path, setPath] = React.useState(window.location.pathname);
-//   const listenToPopstate = () => {
-//     const winPath = window.location.pathname;
-//     setPath(winPath);
-//     console.log(winPath);
-//   };
-//   React.useEffect(() => {
-//     window.addEventListener("popstate", listenToPopstate);
-//     return () => {
-//       window.removeEventListener("popstate", listenToPopstate);
-//     };
-//   }, []);
-//   return path;
-// };
-
 function App() {
   const [theme, setTheme] = React.useState("light");
-  // const location = useReactPath();
-  // console.log(location);
-  // const [location, setLocation] = useState(window.location.pathname);
-  // console.log(window.location.href);
-  // const url = window.location.href;
 
-  // useEffect(() => {
-  //   console.log(location);
-  // }, [location]);
-
+  //change dark/light mode
   const handleToggle = () => {
     if (theme === "light") {
       setTheme("dark");
