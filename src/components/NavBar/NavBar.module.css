@@ -23,7 +23,7 @@
 
 .Logo {
     flex-grow: 1;
-
+    cursor: pointer;
 }
 
 .Logo svg {

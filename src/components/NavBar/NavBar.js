@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import LightDarkMode from "../LightDarkMode/LightDarkMode";
 import Button from "../Button/Button";
@@ -20,11 +20,14 @@ function NavBar({ theme, handleToggle }) {
       window.removeEventListener("resize", handleResizeWindow);
     };
   }, []);
-
+  const navigate = useNavigate();
+  const navigateToTodo = () => {
+    navigate("/todo");
+  };
   return (
     <header>
       <div className={style.NavBar}>
-        <div className={style.Logo}>
+        <div onClick={navigateToTodo} className={style.Logo}>
           <Logo />
         </div>
         {screenSize < 767 ? (
@@ -41,13 +44,13 @@ function NavBar({ theme, handleToggle }) {
             ) : (
               <ul className={style.MobileMenuLinks}>
                 <li>
-                  <Link to="/about">About</Link>
-                </li>
-                <li>
                   <Link to="/todo">Todo</Link>
                 </li>
                 <li>
                   <Link to="/toread">To Read</Link>
+                </li>
+                <li>
+                  <Link to="/about">About</Link>
                 </li>
                 <li>
                   <div onClick={() => setShowMenu(false)}>
@@ -59,9 +62,9 @@ function NavBar({ theme, handleToggle }) {
           </>
         ) : (
           <div className="style.FullSizeNavBar">
-            <Link to="/about">About</Link>
             <Link to="/todo">Todo</Link>
             <Link to="/toread">To Read</Link>
+            <Link to="/about">About</Link>
           </div>
         )}
         <LightDarkMode theme={theme} handleToggle={handleToggle} />
