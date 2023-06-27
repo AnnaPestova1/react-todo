@@ -1,24 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
+import InputWithLabel from "../../InputWithLabel";
+import Button from "../../Button/Button";
+import Loader from "../../Loader/Loader";
 import AddTodoForm from "../AddTodoForm/AddTodoForm";
 import TodoList from "../TodoList/TodoList";
 import SortTodo from "../SortTodo/SortTodo";
-import InputWithLabel from "../../InputWithLabel";
-import Button from "../../Button/Button";
 import style from "./TodoContainer.module.css";
 
 //The component that works with API and get, add and delete todos from Airtable, sorting todos
 function TodoContainer({ tableName, baseName, apiKey }) {
-  const [todoList, setTodoList] = React.useState([]);
-  const [isEditing, setIsEditing] = React.useState(false);
-  const [sortDirection, setSortDirection] = React.useState("");
-  const [isLoading, setIsLoading] = React.useState(true);
-  const [editTodoTitle, setEditTodoTitle] = React.useState("");
-  const [editedTodo, setEditedTodo] = React.useState({});
+  const [todoList, setTodoList] = useState([]);
+  const [isEditing, setIsEditing] = useState(false);
+  const [sortDirection, setSortDirection] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+  const [editTodoTitle, setEditTodoTitle] = useState("");
+  const [editedTodo, setEditedTodo] = useState({});
 
   //changing background for Todo page
-  React.useEffect(() => {
-    if (window.location.pathname === "/todo") {
+  const location = useLocation();
+  useEffect(() => {
+    if (location.pathname === "/todo") {
       document.body.style.backgroundImage = "url('./IMG_4835.jpeg')";
       document.body.style.backgroundSize = "cover";
       document.body.style.backgroundRepeat = "no-repeat";
@@ -145,7 +148,7 @@ function TodoContainer({ tableName, baseName, apiKey }) {
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     fetchData(tableName);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tableName]);
@@ -285,20 +288,16 @@ function TodoContainer({ tableName, baseName, apiKey }) {
         <>
           <AddTodoForm onAddTodo={addTodo} />
           {isLoading ? (
-            <p className={style.Loading}>Loading ...</p>
+            <p className={style.Loading}>
+              <Loader />
+            </p>
           ) : todoList.length ? (
             <>
-              <SortTodo
-                todoList={todoList}
-                sortList={sortList}
-                setTodoList={setTodoList}
-                sortDirection={sortDirection}
-                setSortDirection={setSortDirection}
-              />
+              <SortTodo sortList={sortList} sortDirection={sortDirection} />
               <TodoList
                 todoList={todoList}
-                onRemoveTodo={removeTodo}
                 onEditTodo={handleEditButton}
+                onRemoveTodo={removeTodo}
               />
             </>
           ) : (

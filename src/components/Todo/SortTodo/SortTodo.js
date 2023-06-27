@@ -3,11 +3,12 @@ import PropTypes from "prop-types";
 import Button from "../../Button/Button";
 import style from "./SortTodo.module.css";
 
-function SortTodo({ sortList }) {
+function SortTodo({ sortList, sortDirection }) {
   return (
     <div className={style.SortTodo}>
       <span className={style.SortButton}>
         <Button
+          active={sortDirection === "titleAsc"}
           type="button"
           onClick={() => {
             sortList("titleAsc");
@@ -16,6 +17,7 @@ function SortTodo({ sortList }) {
           Sort by title (A-Z)
         </Button>
         <Button
+          active={sortDirection === "dateAsc"}
           type="button"
           onClick={() => {
             sortList("dateAsc");
@@ -26,6 +28,7 @@ function SortTodo({ sortList }) {
       </span>
       <span className={style.SortButton}>
         <Button
+          active={sortDirection === "titleDesc"}
           type="button"
           onClick={() => {
             sortList("titleDesc");
@@ -34,6 +37,7 @@ function SortTodo({ sortList }) {
           Sort by title (Z-A)
         </Button>
         <Button
+          active={sortDirection === "dateDesc"}
           type="button"
           onClick={() => {
             sortList("dateDesc");

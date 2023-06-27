@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
+import Loader from "../../Loader/Loader";
 import ToReadList from "../ToReadList/ToReadList";
 import FetchList from "../FetchList/FetchList";
 import SearchBookForm from "../SearchBookForm/SearchBookForm";
@@ -22,8 +24,9 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
   const limit = 10;
 
   //changing background for ToRead page
-  React.useEffect(() => {
-    if (window.location.pathname === "/toread") {
+  const location = useLocation();
+  useEffect(() => {
+    if (location.pathname === "/toread") {
       document.body.style.backgroundImage = "url('./IMG_4911.jpeg')";
       document.body.style.backgroundSize = "cover";
       document.body.style.backgroundPosition = "center";
@@ -59,7 +62,7 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     fetchData(tableBooksName);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tableBooksName]);
@@ -86,7 +89,7 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
   };
 
   //workind with pagination
-  React.useEffect(() => {
+  useEffect(() => {
     if (isAddingBook === true && search !== "") {
       fetchBook(search, page, limit);
     }
@@ -104,7 +107,6 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
           : " ",
       },
     };
-    console.log(postBook);
     const url = `https://api.airtable.com/v0/${baseName}/${tableBooksName}`;
     const options = {
       method: "POST",
@@ -198,7 +200,9 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
             Add new book
           </button>
           {isLoading ? (
-            <p className={style.Loading}>Loading ...</p>
+            <p className={style.Loading}>
+              <Loader />
+            </p>
           ) : toReadList.length ? (
             <>
               <ToReadList

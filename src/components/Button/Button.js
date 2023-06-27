@@ -3,10 +3,10 @@ import PropTypes from "prop-types";
 import style from "./Button.module.css";
 
 //standart buttom in app
-function Button({ type, title, onClick, children }) {
+function Button({ active, type, title, onClick, children }) {
   return (
     <button
-      className={style.AllButtons}
+      className={active ? style.Active : style.AllButtons}
       type={type}
       title={title}
       onClick={onClick}

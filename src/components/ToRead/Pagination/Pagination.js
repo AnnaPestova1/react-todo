@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import style from "./Pagination.module.css";
 
-const Pagination = ({ totalPages, setPage }) => {
+function Pagination({ totalPages, setPage }) {
   let pages = [];
   for (let i = 0; i < totalPages; i++) {
     pages.push(i + 1);
@@ -19,7 +19,7 @@ const Pagination = ({ totalPages, setPage }) => {
       ))}
     </div>
   );
-};
+}
 
 Pagination.propTypes = {
   totalPages: PropTypes.number,

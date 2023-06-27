@@ -52,5 +52,7 @@
 @media (max-width: 767px) {
     .Logo svg {
         height: 70px;
+        width: auto;
+        margin-left: 15px;
     }
 }

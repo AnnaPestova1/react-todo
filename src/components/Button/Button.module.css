@@ -10,6 +10,18 @@
     cursor: pointer;
 }
 
+.Active .AllButtons {
+    margin: 0 10px 0 10px;
+    background-color: rgb(192, 191, 197);
+    color: rgb(28, 3, 105);
+    height: 30px;
+    font-size: 5px;
+    border-width: 1px;
+    border-radius: 5px;
+    padding: 3px;
+    cursor: pointer;
+}
+
 .AllButtons svg {
     height: 20px;
     width: 25px;

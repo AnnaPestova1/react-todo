@@ -2,7 +2,7 @@ import React from "react";
 import { ReactComponent as GitHubLogo } from "../../img/github-mark.svg";
 import style from "./Footer.module.css";
 
-const Footer = () => {
+function Footer() {
   //current year
   const today = new Date();
   const thisYear = today.getFullYear();
@@ -26,6 +26,6 @@ const Footer = () => {
       </div>
     </footer>
   );
-};
+}
 
 export default Footer;

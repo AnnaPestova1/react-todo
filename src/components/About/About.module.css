@@ -1,6 +1,5 @@
 .AboutPage {
     padding: 150px 40px 40px 40px;
-    min-height: calc(100% - 200px);
-    width: 100%;
+    min-height: calc(100% - 240px);
     text-align: center;
 }

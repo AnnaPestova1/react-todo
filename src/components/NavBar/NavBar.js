@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import LightDarkMode from "../LightDarkMode/LightDarkMode";
 import Button from "../Button/Button";
 import { ReactComponent as Logo } from "../../img/CustomLogo.svg";
+import { ReactComponent as LogoDarkMode } from "../../img/CustomLogoDarkMode.svg";
 import { ReactComponent as Menu } from "../../img/menu_black_24dp.svg";
 import { ReactComponent as Close } from "../../img/close_black_24dp.svg";
 import style from "./NavBar.module.css";
@@ -13,6 +14,7 @@ function NavBar({ theme, handleToggle }) {
   const [showMenu, setShowMenu] = useState(false);
 
   // changing NavBar view according full/mobile size
+
   useEffect(() => {
     const handleResizeWindow = () => setScreenSize(window.innerWidth);
     window.addEventListener("resize", handleResizeWindow);
@@ -28,7 +30,7 @@ function NavBar({ theme, handleToggle }) {
     <header>
       <div className={style.NavBar}>
         <div onClick={navigateToTodo} className={style.Logo}>
-          <Logo />
+          {theme === "light" ? <Logo /> : <LogoDarkMode />}
         </div>
         {screenSize < 767 ? (
           <>

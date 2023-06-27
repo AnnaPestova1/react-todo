@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import TodoContainer from "../../components/Todo/TodoContainer/TodoContainer";
+import TodoContainer from "../Todo/TodoContainer/TodoContainer";
 import ToReadContainer from "../ToRead/ToReadContainer/ToReadContainer";
 import NavBar from "../NavBar/NavBar";
 import NotFound from "../NotFound/NotFound";

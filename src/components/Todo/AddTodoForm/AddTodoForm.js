@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import InputWithLabel from "../../InputWithLabel";
 import Button from "../../Button/Button";
@@ -7,7 +7,7 @@ import style from "./AddTodoForm.module.css";
 
 // adding new todo in app
 function AddTodoForm({ onAddTodo }) {
-  const [todoTitle, setTodoTitle] = React.useState("");
+  const [todoTitle, setTodoTitle] = useState("");
 
   function handleTitleChange(event) {
     console.log(event);
