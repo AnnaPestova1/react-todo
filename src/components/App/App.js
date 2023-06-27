@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import TodoContainer from "../Todo/TodoContainer/TodoContainer";
 import ToReadContainer from "../ToRead/ToReadContainer/ToReadContainer";
@@ -15,7 +15,7 @@ const baseName = process.env.REACT_APP_AIRTABLE_BASE_ID;
 const apiKey = process.env.REACT_APP_AIRTABLE_API_KEY;
 
 function App() {
-  const [theme, setTheme] = React.useState("light");
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
   //change dark/light mode
   const handleToggle = () => {
@@ -25,6 +25,11 @@ function App() {
       setTheme("light");
     }
   };
+  React.useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
   return (
     <div className={style[theme]}>
       <BrowserRouter>
