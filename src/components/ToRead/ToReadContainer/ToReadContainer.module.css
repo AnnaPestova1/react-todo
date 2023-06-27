@@ -20,7 +20,7 @@
     text-align: center
 }
 
-.AddNewBookButton {
+.ToReadLosrAndAddButton button {
     margin: 0 10px 0 10px;
     background-color: rgb(215, 213, 222);
     color: rgb(28, 3, 105);
@@ -28,13 +28,12 @@
     border-width: 1px;
     border-radius: 5px;
     padding: 3px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto 10px 0;
     cursor: pointer;
 }
 
 @media (max-width: 767px) {
-    .AddNewBookButton {
+    .ToReadLosrAndAddButton button {
         font-size: 12px;
         height: 20px;
         width: auto;

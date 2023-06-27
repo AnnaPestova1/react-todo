@@ -1,4 +1,4 @@
-.SortTodo {
+.SortToRead {
     display: flex;
     flex-flow: column wrap;
     justify-content: center;
@@ -7,7 +7,7 @@
     text-align-last: center;
 }
 
-.SortTodo span {
+.SortToRead span {
     padding: 0;
 }
 

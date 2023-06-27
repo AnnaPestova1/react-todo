@@ -92,10 +92,8 @@ function TodoContainer({ tableName, baseName, apiKey }) {
 
   const handleEditButton = (id) => {
     const currentEditedItem = todoList.find(function (todo) {
-      //console.log(todo.title);
       return id === todo.id;
     });
-    console.log(currentEditedItem);
     const editTodoItem = currentEditedItem.title;
 
     setEditTodoTitle(editTodoItem);
