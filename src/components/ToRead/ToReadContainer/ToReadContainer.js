@@ -143,7 +143,8 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
   // fetch books from Google Books
   const fetchBook = async (search, page, limit) => {
     const startIndex = (page - 1) * limit;
-    const url = `https://www.googleapis.com/books/v1/volumes?q=${search}&&startIndex=${startIndex}&&maxResult=${limit}`;
+    const url = `https://www.googleapis.com/books/v1/volumes?q=${search}&startIndex=${startIndex}&maxResults=${limit}`;
+    console.log("url", url);
     const options = {
       method: "GET",
     };
@@ -171,7 +172,6 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
 
   //add book from Google Books to Airtable
   const addToRead = async (book) => {
-    console.log(book);
     const postBook = {
       fields: {
         Name: book.volumeInfo.title,
