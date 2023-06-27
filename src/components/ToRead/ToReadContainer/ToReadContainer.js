@@ -34,7 +34,7 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
       document.body.style.backgroundSize = "cover";
       document.body.style.backgroundPosition = "center";
     }
-  }, []);
+  }, [location.pathname]);
   const onSortByName = () => {
     function sortData(a, b) {
       if (a.Name > b.Name) {

@@ -27,7 +27,7 @@ function TodoContainer({ tableName, baseName, apiKey }) {
       document.body.style.backgroundRepeat = "no-repeat";
       document.body.style.backgroundPosition = "left";
     }
-  }, []);
+  }, [location.pathname]);
 
   // functions to sort todos
   const onSortByTitle = () => {

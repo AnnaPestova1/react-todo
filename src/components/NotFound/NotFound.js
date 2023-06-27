@@ -12,11 +12,11 @@ function NotFound() {
       document.body.style.backgroundSize = "cover";
       document.body.style.backgroundPosition = "center";
     }
-  }, []);
+  }, [location.pathname]);
 
   return (
     <div className={style.NotFound}>
-      <h1 className={style.Error}>Error 404: Page not found</h1>
+      <h1 className={style.Error}>Page not found</h1>
     </div>
   );
 }

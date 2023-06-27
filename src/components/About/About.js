@@ -11,7 +11,7 @@ function About() {
       document.body.style.backgroundSize = "cover";
       document.body.style.backgroundPosition = "center";
     }
-  }, []);
+  }, [location.pathname]);
   return (
     <div className={style.AboutPage}>
       The ultimate productivity companion for managing your tasks and organizing
