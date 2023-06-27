@@ -25,7 +25,7 @@ function App() {
       setTheme("light");
     }
   };
-  React.useEffect(() => {
+  useEffect(() => {
     document.documentElement.dataset.theme = theme;
     localStorage.setItem("theme", theme);
   }, [theme]);

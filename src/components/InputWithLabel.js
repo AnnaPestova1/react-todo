@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 
 /*component with reusable controlled input with label */
@@ -11,7 +11,7 @@ function InputWithLabel({
   name = "title",
   onInputChange,
 }) {
-  const inputRef = React.useRef();
+  const inputRef = useRef();
 
   useEffect(() => {
     inputRef.current.focus();
