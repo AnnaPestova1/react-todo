@@ -126,7 +126,6 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
           Author: toRead.fields.Author,
         };
       });
-      console.log(toRead);
       setToReadList(toRead);
       sortList(sortDirection);
       setIsLoading(false);
@@ -144,7 +143,6 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
   const fetchBook = async (search, page, limit) => {
     const startIndex = (page - 1) * limit;
     const url = `https://www.googleapis.com/books/v1/volumes?q=${search}&startIndex=${startIndex}&maxResults=${limit}`;
-    console.log("url", url);
     const options = {
       method: "GET",
     };

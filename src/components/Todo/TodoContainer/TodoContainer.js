@@ -158,7 +158,6 @@ function TodoContainer({ tableName, baseName, apiKey }) {
         title: title,
       },
     };
-    console.log(postTitle);
     const url = `https://api.airtable.com/v0/${baseName}/${tableName}`;
     const options = {
       method: "POST",
@@ -235,7 +234,6 @@ function TodoContainer({ tableName, baseName, apiKey }) {
 
   //remove todo item from Airtable
   const removeTodo = async (id) => {
-    console.log(id);
     const url = `https://api.airtable.com/v0/${baseName}/${tableName}/${id}`;
     const options = {
       method: "DELETE",

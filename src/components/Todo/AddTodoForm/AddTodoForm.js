@@ -10,18 +10,15 @@ function AddTodoForm({ onAddTodo }) {
   const [todoTitle, setTodoTitle] = useState("");
 
   function handleTitleChange(event) {
-    console.log(event);
     const newTodoTitle = event.target.value;
     setTodoTitle(newTodoTitle);
   }
 
   function handleAddTodo(event) {
-    console.log(event);
     event.preventDefault();
     if (todoTitle === "") {
       return;
     }
-    console.log(todoTitle);
     onAddTodo(todoTitle);
     setTodoTitle("");
   }
