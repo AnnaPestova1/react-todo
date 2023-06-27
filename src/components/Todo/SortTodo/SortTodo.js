@@ -52,5 +52,6 @@ function SortTodo({ sortList, sortDirection }) {
 
 SortTodo.propTypes = {
   sortList: PropTypes.func,
+  sortDirection: PropTypes.string,
 };
 export default SortTodo;

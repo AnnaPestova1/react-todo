@@ -16,6 +16,7 @@ function Button({ active, type, title, onClick, children }) {
   );
 }
 Button.propTypes = {
+  active: PropTypes.bool,
   type: PropTypes.string,
   title: PropTypes.string,
   onClick: PropTypes.func,
