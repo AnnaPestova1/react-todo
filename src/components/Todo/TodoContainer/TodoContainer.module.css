@@ -18,3 +18,8 @@
 .GoodJob {
     text-align: center
 }
+
+.EditForm {
+    display: flex;
+    justify-content: center;
+}

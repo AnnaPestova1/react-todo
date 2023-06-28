@@ -19,8 +19,6 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
   const [sortDirection, setSortDirection] = useState("");
   //books from Google Books
   const [books, setBooks] = useState([]);
-  //amount of loading pages from Google
-  const [totalPages, setTotalPages] = useState(0);
   //showing page from Google
   const [page, setPage] = useState(1);
   //limit books per page from Google
@@ -35,6 +33,7 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
       document.body.style.backgroundPosition = "center";
     }
   }, [location.pathname]);
+
   const onSortByName = () => {
     function sortData(a, b) {
       if (a.Name > b.Name) {
@@ -104,6 +103,12 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
     }
     setSortDirection(sortDirection);
   };
+
+  const onLoadMore = () => {
+    setPage(page + 1);
+    console.log(page);
+  };
+
   //fetch books from Airtable
   const fetchData = async (tableBooksName) => {
     const url = `https://api.airtable.com/v0/${baseName}/${tableBooksName}`;
@@ -141,6 +146,7 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
 
   // fetch books from Google Books
   const fetchBook = async (search, page, limit) => {
+    console.log(page);
     const startIndex = (page - 1) * limit;
     const url = `https://www.googleapis.com/books/v1/volumes?q=${search}&startIndex=${startIndex}&maxResults=${limit}`;
     const options = {
@@ -152,15 +158,14 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
         throw new Error(`Error: ${response.status}`);
       }
       const data = await response.json();
-      setBooks(data.items);
-      const totalCount = data.totalItems;
-      setTotalPages(Math.ceil(totalCount / limit));
+      const booksOnPage = data.items;
+      setBooks([...books, ...booksOnPage]);
     } catch (error) {
       console.log(error.message);
     }
   };
 
-  //workind with pagination
+  // workind with pagination
   useEffect(() => {
     if (isAddingBook === true && search !== "") {
       fetchBook(search, page, limit);
@@ -203,7 +208,6 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
       setIsAddingBook(false);
       setBooks([]);
       setSearch("");
-      setTotalPages(0);
     } catch (error) {
       console.log(error.message);
       return null;
@@ -234,11 +238,10 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
       return null;
     }
   };
-
   return (
     <div className={style.ToReadContainer}>
       {isAddingBook ? (
-        <div>
+        books.length === 0 ? (
           <SearchBookForm
             fetchBook={fetchBook}
             page={page}
@@ -247,17 +250,27 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
             setSearch={setSearch}
             setIsAddingBook={setIsAddingBook}
             setBooks={setBooks}
-            setTotalPages={setTotalPages}
           />
+        ) : (
+          <div>
+            <SearchBookForm
+              fetchBook={fetchBook}
+              page={page}
+              limit={limit}
+              search={search}
+              setSearch={setSearch}
+              setIsAddingBook={setIsAddingBook}
+              setBooks={setBooks}
+            />
 
-          <FetchList
-            books={books}
-            setBooks={setBooks}
-            addToRead={addToRead}
-            totalPages={totalPages}
-            setPage={setPage}
-          />
-        </div>
+            <FetchList
+              books={books}
+              setBooks={setBooks}
+              addToRead={addToRead}
+              onLoadMore={onLoadMore}
+            />
+          </div>
+        )
       ) : (
         <div>
           <h1 className={style.ToReadTitle}>{tableBooksName}</h1>

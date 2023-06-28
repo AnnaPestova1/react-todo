@@ -5,20 +5,20 @@ import Pagination from "../Pagination/Pagination";
 import style from "./FetchList.module.css";
 
 //Google search book results layout
-function FetchList({ books, setBooks, addToRead, totalPages, setPage }) {
+function FetchList({ books, setBooks, addToRead, onLoadMore }) {
   return (
     <div>
       <ul className={style.FetchBookList}>
-        {books.map((book) => (
+        {books.map((book, index) => (
           <FetchListItem
-            key={book.id}
+            key={book.id + index}
             book={book}
             setBooks={setBooks}
             addToRead={addToRead}
           />
         ))}
       </ul>
-      <Pagination totalPages={totalPages} setPage={setPage} />
+      <Pagination onLoadMore={onLoadMore} />
     </div>
   );
 }
@@ -26,8 +26,7 @@ FetchList.propTypes = {
   books: PropTypes.array,
   setBooks: PropTypes.func,
   addToRead: PropTypes.func,
-  totalPages: PropTypes.number,
-  setPage: PropTypes.func,
+  onLoadMore: PropTypes.func,
 };
 
 export default FetchList;

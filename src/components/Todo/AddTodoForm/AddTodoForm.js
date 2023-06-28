@@ -30,6 +30,7 @@ function AddTodoForm({ onAddTodo }) {
         placeholder="add to do"
         value={todoTitle}
         onInputChange={handleTitleChange}
+        keepAutoFocus
       >
         <strong>Title:</strong>
       </InputWithLabel>

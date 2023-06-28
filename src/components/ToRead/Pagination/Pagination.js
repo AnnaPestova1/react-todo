@@ -1,28 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Button from "../../Button/Button";
 import style from "./Pagination.module.css";
 
-function Pagination({ totalPages, setPage }) {
-  let pages = [];
-  for (let i = 0; i < totalPages; i++) {
-    pages.push(i + 1);
-  }
-  const changePage = (currentPage) => {
-    setPage(currentPage);
-  };
+function Pagination({ onLoadMore }) {
   return (
-    <div className={style.PaginationLink}>
-      {pages.map((p) => (
-        <span key={p} onClick={() => changePage(p)}>
-          {p}
-        </span>
-      ))}
+    <div className={style.LoadButton}>
+      <Button onClick={onLoadMore}>Load more</Button>
     </div>
   );
 }
 
 Pagination.propTypes = {
-  totalPages: PropTypes.number,
-  setPage: PropTypes.func,
+  onLoadMore: PropTypes.func,
 };
 export default Pagination;

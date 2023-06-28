@@ -10,11 +10,18 @@ function InputWithLabel({
   type = "text",
   name = "title",
   onInputChange,
+  keepAutoFocus = false,
 }) {
   const inputRef = useRef();
 
   useEffect(() => {
     inputRef.current.focus();
+  }, []);
+  //focusing on input in todo page
+  useEffect(() => {
+    if (keepAutoFocus) {
+      inputRef.current.focus();
+    }
   });
 
   return (
@@ -40,5 +47,6 @@ InputWithLabel.propTypes = {
   placeholder: PropTypes.string,
   name: PropTypes.string,
   onInputChange: PropTypes.func,
+  keepAutoFocus: PropTypes.bool,
 };
 export default InputWithLabel;

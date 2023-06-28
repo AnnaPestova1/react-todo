@@ -95,7 +95,6 @@ function TodoContainer({ tableName, baseName, apiKey }) {
       return id === todo.id;
     });
     const editTodoItem = currentEditedItem.title;
-
     setEditTodoTitle(editTodoItem);
     setEditedTodo(currentEditedItem);
     setIsEditing(true);
@@ -263,6 +262,7 @@ function TodoContainer({ tableName, baseName, apiKey }) {
       {isEditing ? (
         <>
           <form
+            className={style.EditForm}
             onSubmit={(event) =>
               editTodoItem(editTodoTitle, editedTodo.id, event)
             }
