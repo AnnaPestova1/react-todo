@@ -5,14 +5,7 @@ import Pagination from "../Pagination/Pagination";
 import style from "./FetchList.module.css";
 
 //Google search book results layout
-function FetchList({
-  books,
-  setBooks,
-  addToRead,
-  fetchBook,
-  totalPages,
-  setPage,
-}) {
+function FetchList({ books, setBooks, addToRead, totalPages, setPage }) {
   return (
     <div>
       <ul className={style.FetchBookList}>
@@ -25,11 +18,7 @@ function FetchList({
           />
         ))}
       </ul>
-      <Pagination
-        fetchBook={fetchBook}
-        totalPages={totalPages}
-        setPage={setPage}
-      />
+      <Pagination totalPages={totalPages} setPage={setPage} />
     </div>
   );
 }
@@ -37,7 +26,6 @@ FetchList.propTypes = {
   books: PropTypes.array,
   setBooks: PropTypes.func,
   addToRead: PropTypes.func,
-  fetchBook: PropTypes.func,
   totalPages: PropTypes.number,
   setPage: PropTypes.func,
 };

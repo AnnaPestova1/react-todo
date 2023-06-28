@@ -254,7 +254,6 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
             books={books}
             setBooks={setBooks}
             addToRead={addToRead}
-            fetchBook={fetchBook}
             totalPages={totalPages}
             setPage={setPage}
           />
