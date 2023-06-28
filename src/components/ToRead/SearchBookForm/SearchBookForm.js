@@ -2,7 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import InputWithLabel from "../../InputWithLabel";
 import Button from "../../Button/Button";
+import AddNewBook from "../AddNewBook/AddNewBook";
 import { ReactComponent as Search } from "../../../img/search_black_24dp.svg";
+import { ReactComponent as EnterNewBook } from "../../../img/library_add_black_24dp.svg";
 import { ReactComponent as Close } from "../../../img/close_black_24dp.svg";
 import style from "./SearchBookForm.module.css";
 
@@ -14,7 +16,7 @@ function SearchBookForm({
   setSearch,
   setIsAddingBook,
   setBooks,
-  setTotalPages,
+  setIsManuallyAddingBook,
 }) {
   function handleBookSearch(event) {
     event.preventDefault();
@@ -23,7 +25,9 @@ function SearchBookForm({
     }
     fetchBook(search, page, limit);
   }
-
+  function handleAddNewBook() {
+    setIsManuallyAddingBook(true);
+  }
   return (
     <div className={style.SearchBookForm}>
       <form onSubmit={handleBookSearch}>
@@ -38,6 +42,9 @@ function SearchBookForm({
         <Button type="submit" title="add new book">
           <Search />
         </Button>
+        <Button type="button" title="enter new book" onClick={handleAddNewBook}>
+          <EnterNewBook />
+        </Button>
         <Button
           type="button"
           title="close search form"
@@ -45,7 +52,6 @@ function SearchBookForm({
             setIsAddingBook(false);
             setSearch("");
             setBooks([]);
-            setTotalPages(0);
           }}
         >
           <Close />
@@ -62,6 +68,6 @@ SearchBookForm.propTypes = {
   setSearch: PropTypes.func,
   setIsAddingBook: PropTypes.func,
   setBooks: PropTypes.func,
-  setTotalPages: PropTypes.func,
+  setIsManuallyAddingBook: PropTypes.func,
 };
 export default SearchBookForm;

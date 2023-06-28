@@ -8,6 +8,7 @@ import FetchList from "../FetchList/FetchList";
 import SearchBookForm from "../SearchBookForm/SearchBookForm";
 import SortToRead from "../SortToRead/SortToRead";
 import style from "./ToReadContainer.module.css";
+import AddNewBook from "../AddNewBook/AddNewBook";
 
 //The component that works with API and get, add and delete books from Airtable and get books from Google
 function ToReadContainer({ tableBooksName, baseName, apiKey }) {
@@ -21,6 +22,7 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
   const [books, setBooks] = useState([]);
   //showing page from Google
   const [page, setPage] = useState(1);
+  const [isManuallyAddingBook, setIsManuallyAddingBook] = useState(false);
   //limit books per page from Google
   const limit = 10;
 
@@ -158,8 +160,13 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
         throw new Error(`Error: ${response.status}`);
       }
       const data = await response.json();
-      const booksOnPage = data.items;
-      setBooks([...books, ...booksOnPage]);
+      console.log(data.items);
+      console.log(data.totalItems);
+
+      if (data.items) {
+        setBooks([...books, ...data.items]);
+      }
+      console.log(books.length);
     } catch (error) {
       console.log(error.message);
     }
@@ -240,8 +247,10 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
   };
   return (
     <div className={style.ToReadContainer}>
-      {isAddingBook ? (
-        books.length === 0 ? (
+      {isManuallyAddingBook ? (
+        <AddNewBook />
+      ) : isAddingBook && !isManuallyAddingBook ? (
+        <div>
           <SearchBookForm
             fetchBook={fetchBook}
             page={page}
@@ -250,27 +259,26 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
             setSearch={setSearch}
             setIsAddingBook={setIsAddingBook}
             setBooks={setBooks}
+            setIsManuallyAddingBook={setIsManuallyAddingBook}
           />
-        ) : (
-          <div>
-            <SearchBookForm
-              fetchBook={fetchBook}
-              page={page}
-              limit={limit}
-              search={search}
-              setSearch={setSearch}
-              setIsAddingBook={setIsAddingBook}
-              setBooks={setBooks}
-            />
-
+          {books.length > 0 && (
             <FetchList
               books={books}
               setBooks={setBooks}
               addToRead={addToRead}
               onLoadMore={onLoadMore}
             />
-          </div>
-        )
+          )}
+          {books.length === 0 && (
+            <div>
+              <h1>Search for the books!</h1>
+              <p>
+                If you can't find the book in the database, use the <b>+</b>{" "}
+                button above to add it manually.
+              </p>
+            </div>
+          )}
+        </div>
       ) : (
         <div>
           <h1 className={style.ToReadTitle}>{tableBooksName}</h1>
