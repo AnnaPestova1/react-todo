@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Button from "../../Button/Button";
+import Button from "../../Button/Button.tsx";
 import { ReactComponent as Remove } from "../../../img/delete_black_24dp-2.svg";
 import style from "./ToReadListItem.module.css";
 

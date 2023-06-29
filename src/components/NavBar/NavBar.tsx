@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import PropTypes from "prop-types";
 import LightDarkMode from "../LightDarkMode/LightDarkMode";
 import Button from "../Button/Button";
 import { ReactComponent as Logo } from "../../img/CustomLogo.svg";
@@ -9,7 +8,11 @@ import { ReactComponent as Menu } from "../../img/menu_black_24dp.svg";
 import { ReactComponent as Close } from "../../img/close_black_24dp.svg";
 import style from "./NavBar.module.css";
 
-function NavBar({ theme, handleToggle }) {
+interface NavBarProps {
+  theme: string;
+  handleToggle: () => void;
+}
+function NavBar({ theme, handleToggle }: NavBarProps) {
   const [screenSize, setScreenSize] = useState(window.innerWidth);
   const [showMenu, setShowMenu] = useState(false);
 
@@ -78,8 +81,4 @@ function NavBar({ theme, handleToggle }) {
   );
 }
 
-NavBar.propTypes = {
-  theme: PropTypes.string,
-  handleToggle: PropTypes.func,
-};
 export default NavBar;

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Button from "../../Button/Button";
+import Button from "../../Button/Button.tsx";
 import style from "./SortToRead.module.css";
 
 function SortToRead({ sortList, sortDirection }) {

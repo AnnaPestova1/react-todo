@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Button from "../Button/Button";
+import Button from "../Button/Button.tsx";
 import { ReactComponent as DarkMode } from "../../img/dark_mode_black_24dp.svg";
 import { ReactComponent as LightMode } from "../../img/light_mode_black_24dp-2.svg";
 import style from "./LightDarkMode.module.css";

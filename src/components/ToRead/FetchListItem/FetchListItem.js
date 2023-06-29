@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Button from "../../Button/Button";
+import Button from "../../Button/Button.tsx";
 import { ReactComponent as Add } from "../../../img/add_black_24dp.svg";
 import { ReactComponent as NoImage } from "../../../img/image_not_supported_black_24dp.svg";
 import style from "./FetchListItem.module.css";

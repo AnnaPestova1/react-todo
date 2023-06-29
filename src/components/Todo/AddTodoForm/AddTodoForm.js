@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import InputWithLabel from "../../InputWithLabel";
-import Button from "../../Button/Button";
+import Button from "../../Button/Button.tsx";
 import { ReactComponent as Add } from "../../../img/add_black_24dp.svg";
 import style from "./AddTodoForm.module.css";
 

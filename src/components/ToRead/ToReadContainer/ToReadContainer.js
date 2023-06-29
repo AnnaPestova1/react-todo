@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
 import Loader from "../../Loader/Loader";
-import Button from "../../Button/Button";
+import Button from "../../Button/Button.tsx";
 import ToReadList from "../ToReadList/ToReadList";
 import FetchList from "../FetchList/FetchList";
 import SearchBookForm from "../SearchBookForm/SearchBookForm";

@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
 import InputWithLabel from "../../InputWithLabel";
-import Button from "../../Button/Button";
+import Button from "../../Button/Button.tsx";
 import Loader from "../../Loader/Loader";
 import AddTodoForm from "../AddTodoForm/AddTodoForm";
 import TodoList from "../TodoList/TodoList";
-import SortTodo from "../SortTodo/SortTodo";
+import SortTodo from "../SortTodo/SortTodo.tsx";
 import style from "./TodoContainer.module.css";
 
 //The component that works with API and get, add and delete todos from Airtable, sorting todos
@@ -279,7 +279,13 @@ function TodoContainer({ tableName, baseName, apiKey }) {
             <Button type="submit" title="edit to do">
               Submit
             </Button>
-            <Button onClick={() => setIsEditing(false)}>Cancel</Button>
+            <Button
+              type="button"
+              title="cancel edit to do"
+              onClick={() => setIsEditing(false)}
+            >
+              Cancel
+            </Button>
           </form>
         </>
       ) : (

@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import InputWithLabel from "../../InputWithLabel";
-import Button from "../../Button/Button";
+import Button from "../../Button/Button.tsx";
 import { ReactComponent as Search } from "../../../img/search_black_24dp.svg";
 import { ReactComponent as EnterNewBook } from "../../../img/library_add_black_24dp.svg";
 import { ReactComponent as Close } from "../../../img/close_black_24dp.svg";
