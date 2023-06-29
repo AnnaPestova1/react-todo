@@ -6,7 +6,6 @@ import style from "./FetchList.module.css";
 
 //Google search book results layout
 function FetchList({ books, setBooks, addToRead, onLoadMore }) {
-  console.log(books);
   return (
     <>
       <div>
