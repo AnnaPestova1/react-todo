@@ -6,7 +6,9 @@ import style from "./Pagination.module.css";
 function Pagination({ onLoadMore }) {
   return (
     <div className={style.LoadButton}>
-      <Button onClick={onLoadMore}>Load more</Button>
+      <Button type="button" title="load more books" onClick={onLoadMore}>
+        Load more
+      </Button>
     </div>
   );
 }

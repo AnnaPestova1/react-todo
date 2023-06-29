@@ -33,7 +33,7 @@ function FetchListItem({ book, addToRead }) {
             : " "}
         </span>
         <Button
-          type="submit"
+          type="button"
           title="add book in my list"
           onClick={() => addToRead(book)}
           className={style.AddBookButton}
@@ -51,7 +51,7 @@ function FetchListItem({ book, addToRead }) {
 }
 
 FetchListItem.propTypes = {
-  books: PropTypes.object,
+  book: PropTypes.object,
   addToRead: PropTypes.func,
 };
 export default FetchListItem;

@@ -7,8 +7,8 @@ import ToReadList from "../ToReadList/ToReadList";
 import FetchList from "../FetchList/FetchList";
 import SearchBookForm from "../SearchBookForm/SearchBookForm";
 import SortToRead from "../SortToRead/SortToRead";
-import style from "./ToReadContainer.module.css";
 import AddNewBook from "../AddNewBook/AddNewBook";
+import style from "./ToReadContainer.module.css";
 
 //The component that works with API and get, add and delete books from Airtable and get books from Google
 function ToReadContainer({ tableBooksName, baseName, apiKey }) {
@@ -300,7 +300,6 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
           {books.length > 0 && (
             <FetchList
               books={books}
-              setBooks={setBooks}
               addToRead={addToRead}
               onLoadMore={onLoadMore}
             />

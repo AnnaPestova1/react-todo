@@ -14,7 +14,6 @@ function NavBar({ theme, handleToggle }) {
   const [showMenu, setShowMenu] = useState(false);
 
   // changing NavBar view according full/mobile size
-
   useEffect(() => {
     const handleResizeWindow = () => setScreenSize(window.innerWidth);
     window.addEventListener("resize", handleResizeWindow);
@@ -22,6 +21,7 @@ function NavBar({ theme, handleToggle }) {
       window.removeEventListener("resize", handleResizeWindow);
     };
   }, []);
+
   const navigate = useNavigate();
   const navigateToTodo = () => {
     navigate("/todo");
@@ -36,7 +36,7 @@ function NavBar({ theme, handleToggle }) {
           <>
             {!showMenu ? (
               <Button
-                type="submit"
+                type="button"
                 title="open menu"
                 className={style.MobileMenu}
                 onClick={() => setShowMenu((showMenu) => !showMenu)}

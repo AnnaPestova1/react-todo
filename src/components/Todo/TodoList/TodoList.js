@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import TodoListItem from "../TodoListItem/TodoListItem";
 import style from "./TodoList.module.css";
 
-function TodoList({ todoList, onRemoveTodo, onEditTodo }) {
+function TodoList({ todoList, onEditTodo, onRemoveTodo }) {
   return (
     <ul className={style.TodoListUl}>
       {todoList.map(function (todo) {
@@ -22,7 +22,7 @@ function TodoList({ todoList, onRemoveTodo, onEditTodo }) {
 
 TodoList.propTypes = {
   todoList: PropTypes.array,
-  onRemoveTodo: PropTypes.func,
   onEditTodo: PropTypes.func,
+  onRemoveTodo: PropTypes.func,
 };
 export default TodoList;

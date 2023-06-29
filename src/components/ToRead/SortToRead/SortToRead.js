@@ -3,13 +3,14 @@ import PropTypes from "prop-types";
 import Button from "../../Button/Button";
 import style from "./SortToRead.module.css";
 
-function SortTodo({ sortList, sortDirection }) {
+function SortToRead({ sortList, sortDirection }) {
   return (
     <div className={style.SortToRead}>
       <span className={style.SortButton}>
         <Button
           active={sortDirection === "NameAsc"}
           type="button"
+          title="sort by name ascending order"
           onClick={() => {
             sortList("NameAsc");
           }}
@@ -19,6 +20,7 @@ function SortTodo({ sortList, sortDirection }) {
         <Button
           active={sortDirection === "AuthorAsc"}
           type="button"
+          title="sort by author ascending order"
           onClick={() => {
             sortList("AuthorAsc");
           }}
@@ -30,6 +32,7 @@ function SortTodo({ sortList, sortDirection }) {
         <Button
           active={sortDirection === "NameDesc"}
           type="button"
+          title="sort by name descending order"
           onClick={() => {
             sortList("NameDesc");
           }}
@@ -39,6 +42,7 @@ function SortTodo({ sortList, sortDirection }) {
         <Button
           active={sortDirection === "AuthorDesc"}
           type="button"
+          title="sort by author descending order"
           onClick={() => {
             sortList("AuthorDesc");
           }}
@@ -50,8 +54,8 @@ function SortTodo({ sortList, sortDirection }) {
   );
 }
 
-SortTodo.propTypes = {
+SortToRead.propTypes = {
   sortList: PropTypes.func,
   sortDirection: PropTypes.string,
 };
-export default SortTodo;
+export default SortToRead;

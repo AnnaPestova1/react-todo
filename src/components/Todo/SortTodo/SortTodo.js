@@ -10,6 +10,7 @@ function SortTodo({ sortList, sortDirection }) {
         <Button
           active={sortDirection === "titleAsc"}
           type="button"
+          title="sort by title ascending order"
           onClick={() => {
             sortList("titleAsc");
           }}
@@ -19,6 +20,7 @@ function SortTodo({ sortList, sortDirection }) {
         <Button
           active={sortDirection === "dateAsc"}
           type="button"
+          title="sort by date ascending order"
           onClick={() => {
             sortList("dateAsc");
           }}
@@ -30,6 +32,7 @@ function SortTodo({ sortList, sortDirection }) {
         <Button
           active={sortDirection === "titleDesc"}
           type="button"
+          title="sort by title descending order"
           onClick={() => {
             sortList("titleDesc");
           }}
@@ -39,6 +42,7 @@ function SortTodo({ sortList, sortDirection }) {
         <Button
           active={sortDirection === "dateDesc"}
           type="button"
+          title="sort by date descending order"
           onClick={() => {
             sortList("dateDesc");
           }}

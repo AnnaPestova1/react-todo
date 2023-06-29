@@ -271,6 +271,7 @@ function TodoContainer({ tableName, baseName, apiKey }) {
               id="todoTitle"
               value={editTodoTitle}
               name="title"
+              placeholder="edit to do"
               onInputChange={handleEditTitleChange}
             >
               <strong>Title:</strong>

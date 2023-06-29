@@ -16,22 +16,13 @@
 .BookDescription {
     display: flex;
     flex-direction: row;
-
     padding: 5px;
     margin: 10px;
-
-
-
 }
-
 
 .BookNameAuthorImg {
     font-size: 20px;
     width: 100%;
-
-
-
-
 }
 
 .BookDescription {
@@ -42,8 +33,6 @@
 .BookNameAuthorImg span {
     padding: 10px;
     align-items: center;
-
-
 }
 
 .BookImg {
@@ -67,14 +56,6 @@
     height: 100px;
 }
 
-/* .TodoTitle {
-    flex-grow: 1;
-}
-
-.TodoDate {
-    font-size: 12px;
-} */
-
 @media (min-width: 768px) and (max-width: 991px) {
     .FetchBookFromGoogle {
         width: 100%;
@@ -82,19 +63,12 @@
 }
 
 @media (max-width: 767px) {
-    /* .FetchBookFromGoogle {
+
+    .BookNameAuthorImg {
         font-size: 15px;
-        display: grid;
-        grid-auto-flow: dense;
-        grid-template-columns: 70% 30%;
-        height: 100px;
-    } */
-}
+    }
 
-.BookNameAuthorImg {
-    font-size: 15px;
-}
-
-.BookDescription {
-    font-size: 12px;
+    .BookDescription {
+        font-size: 12px;
+    }
 }
