@@ -64,6 +64,6 @@ function AddNewBook({ onAddNewBook, setIsManuallyAddingBook }) {
 
 AddNewBook.propTypes = {
   onAddNewBook: PropTypes.func,
-  setIsManuallyAddingBook: PropTypes.bool,
+  setIsManuallyAddingBook: PropTypes.func,
 };
 export default AddNewBook;
