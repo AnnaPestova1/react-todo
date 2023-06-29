@@ -108,7 +108,6 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
 
   const onLoadMore = () => {
     setPage(page + 1);
-    console.log(page);
   };
 
   //fetch books from Airtable
@@ -148,7 +147,6 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
 
   // fetch books from Google Books
   const fetchBook = async (search, page, limit) => {
-    console.log(page);
     const startIndex = (page - 1) * limit;
     const url = `https://www.googleapis.com/books/v1/volumes?q=${search}&startIndex=${startIndex}&maxResults=${limit}`;
     const options = {
@@ -160,13 +158,9 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
         throw new Error(`Error: ${response.status}`);
       }
       const data = await response.json();
-      console.log(data.items);
-      console.log(data.totalItems);
-
       if (data.items) {
         setBooks([...books, ...data.items]);
       }
-      console.log(books.length);
     } catch (error) {
       console.log(error.message);
     }
@@ -223,7 +217,6 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
 
   //add manually entered book to Airtable
   const addToReadManually = async (book) => {
-    console.log(book);
     const postBook = {
       fields: {
         Name: book.bookName,
