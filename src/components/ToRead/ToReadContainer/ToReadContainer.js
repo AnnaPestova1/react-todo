@@ -221,6 +221,46 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
     }
   };
 
+  //add manually entered book to Airtable
+  const addToReadManually = async (book) => {
+    console.log(book);
+    const postBook = {
+      fields: {
+        Name: book.bookName,
+        Author: book.bookAuthor,
+      },
+    };
+    const url = `https://api.airtable.com/v0/${baseName}/${tableBooksName}`;
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify(postBook),
+    };
+    try {
+      const response = await fetch(url, options);
+      if (!response.ok) {
+        throw new Error(`Error has ocurred: ${response.status}`);
+      }
+      const toRead = await response.json();
+      const newBook = {
+        id: toRead.id,
+        Name: toRead.fields.Name,
+        Author: toRead.fields.Author,
+      };
+      setToReadList((oldToReadList) => [...oldToReadList, newBook]);
+      sortList(sortDirection);
+      setIsAddingBook(false);
+      setBooks([]);
+      setSearch("");
+    } catch (error) {
+      console.log(error.message);
+      return null;
+    }
+  };
+
   //remove book from Airtable
   const removeToRead = async (id) => {
     const url = `https://api.airtable.com/v0/${baseName}/${tableBooksName}/${id}`;
@@ -248,7 +288,10 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
   return (
     <div className={style.ToReadContainer}>
       {isManuallyAddingBook ? (
-        <AddNewBook />
+        <AddNewBook
+          onAddNewBook={addToReadManually}
+          setIsManuallyAddingBook={setIsManuallyAddingBook}
+        />
       ) : isAddingBook && !isManuallyAddingBook ? (
         <div>
           <SearchBookForm

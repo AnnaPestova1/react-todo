@@ -8,7 +8,7 @@ function InputWithLabel({
   value,
   placeholder,
   type = "text",
-  name = "title",
+  name,
   onInputChange,
   keepAutoFocus = false,
 }) {

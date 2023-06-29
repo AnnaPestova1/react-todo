@@ -55,7 +55,10 @@ function NavBar({ theme, handleToggle }) {
                   <Link to="/about">About</Link>
                 </li>
                 <li>
-                  <div onClick={() => setShowMenu(false)}>
+                  <div
+                    className={style.CloseNavBar}
+                    onClick={() => setShowMenu(false)}
+                  >
                     <Close />
                   </div>
                 </li>

@@ -1,44 +1,60 @@
-import React from "react";
+import React, { useState } from "react";
+import PropTypes from "prop-types";
 import InputWithLabel from "../../InputWithLabel";
 import Button from "../../Button/Button";
 import { ReactComponent as Add } from "../../../img/add_black_24dp.svg";
 import style from "./AddNewBook.module.css";
 
-function AddNewBook() {
+function AddNewBook({ onAddNewBook, setIsManuallyAddingBook }) {
+  const [bookName, setBookName] = useState("");
+  const [bookAuthor, setBookAuthor] = useState("");
+
+  function handleAddNewBook(event) {
+    event.preventDefault();
+    if (bookName === "" || bookAuthor === "") {
+      return;
+    }
+    onAddNewBook({ bookName: bookName, bookAuthor: bookAuthor });
+    setBookName("");
+    setBookAuthor("");
+    setIsManuallyAddingBook(false);
+  }
+
   return (
     <div>
       <h2>
         <strong>Enter new book</strong>
       </h2>
-      <form
-        //    onSubmit={handleAddNewBook}
-        className={style.AddNewBook}
-      >
-        <div className={style.ContainerForNewBook}>
-          <div className={style.BookName}>
+      <form onSubmit={handleAddNewBook} className={style.AddNewBook}>
+        <div className={style.BookName}>
+          <InputWithLabel
+            id="bookName"
+            placeholder="enter book name"
+            name="book name"
+            value={bookName}
+            onInputChange={(event) => {
+              setBookName(event.target.value);
+            }}
+          >
+            <strong>Name:</strong>
+          </InputWithLabel>
+          <div>
             <InputWithLabel
-              id="bookName"
-              placeholder="enter book name"
-              //   value={something}
-              //   onInputChange={something}
+              id="bookAuthor"
+              placeholder="enter book author"
+              name="book author"
+              value={bookAuthor}
+              onInputChange={(event) => {
+                setBookAuthor(event.target.value);
+              }}
             >
-              <strong>Name:</strong>
+              <strong>Author:</strong>
             </InputWithLabel>
-            <div>
-              <InputWithLabel
-                id="bookAuthor"
-                placeholder="enter book author"
-                // value={something}
-                // onInputChange={something}
-              >
-                <strong>Author:</strong>
-              </InputWithLabel>
-            </div>
-            <div className={style.buttonAddBook}>
-              <Button type="submit" title="add information about new book">
-                <Add />
-              </Button>
-            </div>
+          </div>
+          <div className={style.ButtonAddBook}>
+            <Button type="submit" title="add information about new book">
+              <Add />
+            </Button>
           </div>
         </div>
       </form>
@@ -46,4 +62,8 @@ function AddNewBook() {
   );
 }
 
+AddNewBook.propTypes = {
+  onAddNewBook: PropTypes.func,
+  setIsManuallyAddingBook: PropTypes.bool,
+};
 export default AddNewBook;

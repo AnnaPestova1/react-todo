@@ -28,6 +28,7 @@ function AddTodoForm({ onAddTodo }) {
       <InputWithLabel
         id="todoTitle"
         placeholder="add to do"
+        name="title"
         value={todoTitle}
         onInputChange={handleTitleChange}
         keepAutoFocus

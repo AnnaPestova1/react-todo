@@ -2,7 +2,7 @@
     overflow: auto;
     padding: 80px 20px 20px 20px;
     margin: 25px;
-    min-height: calc(100% - 150px);
+    min-height: calc(100% - 210px);
 }
 
 .TodoTitle {

@@ -270,6 +270,7 @@ function TodoContainer({ tableName, baseName, apiKey }) {
             <InputWithLabel
               id="todoTitle"
               value={editTodoTitle}
+              name="title"
               onInputChange={handleEditTitleChange}
             >
               <strong>Title:</strong>

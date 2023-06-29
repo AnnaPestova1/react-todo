@@ -34,6 +34,7 @@ function SearchBookForm({
         <InputWithLabel
           id="search"
           placeholder="Search Books..."
+          name="searchBook"
           value={search}
           onInputChange={(event) => setSearch(event.target.value)}
         >
