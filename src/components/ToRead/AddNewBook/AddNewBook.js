@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import InputWithLabel from "../../InputWithLabel";
 import Button from "../../Button/Button.tsx";
 import { ReactComponent as Add } from "../../../img/add_black_24dp.svg";
+import { ReactComponent as Close } from "../../../img/close_black_24dp.svg";
+
 import style from "./AddNewBook.module.css";
 
 function AddNewBook({ onAddNewBook, setIsManuallyAddingBook }) {
@@ -51,11 +53,20 @@ function AddNewBook({ onAddNewBook, setIsManuallyAddingBook }) {
               <strong>Author:</strong>
             </InputWithLabel>
           </div>
-          <div className={style.ButtonAddBook}>
+          <span className={style.ButtonAddBook}>
             <Button type="submit" title="add information about new book">
               <Add />
             </Button>
-          </div>
+            <Button
+              type="button"
+              title="close search form"
+              onClick={() => {
+                setIsManuallyAddingBook(false);
+              }}
+            >
+              <Close />
+            </Button>
+          </span>
         </div>
       </form>
     </div>

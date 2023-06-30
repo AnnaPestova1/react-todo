@@ -23,11 +23,12 @@
 
 .Logo {
     flex-grow: 1;
-    cursor: pointer;
+
 }
 
 .Logo svg {
     height: 100px;
+    cursor: pointer;
 }
 
 .MobileMenu svg {
