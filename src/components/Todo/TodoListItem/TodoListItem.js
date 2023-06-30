@@ -22,7 +22,7 @@ function TodoListItem({ todo, onEditTodo, onRemoveTodo }) {
           type="button"
           title="remove item"
           onClick={function () {
-            return onRemoveTodo(todo.id);
+            onRemoveTodo(todo.id);
           }}
           className={style.RemoveButton}
         >
