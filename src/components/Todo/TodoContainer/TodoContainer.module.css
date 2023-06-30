@@ -1,0 +1,25 @@
+.TodoContainer {
+    overflow: auto;
+    padding: 80px 20px 20px 20px;
+    margin: 25px;
+    min-height: calc(100% - 210px);
+}
+
+.TodoTitle {
+    text-align: center
+}
+
+.Loading {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.GoodJob {
+    text-align: center
+}
+
+.EditForm {
+    display: flex;
+    justify-content: center;
+}

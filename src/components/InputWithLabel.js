@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 
 /*component with reusable controlled input with label */
@@ -6,14 +6,22 @@ function InputWithLabel({
   id,
   children,
   value,
+  placeholder,
   type = "text",
-  name = "title",
+  name,
   onInputChange,
+  keepAutoFocus = false,
 }) {
-  const inputRef = React.useRef();
+  const inputRef = useRef();
 
-  React.useEffect(() => {
+  useEffect(() => {
     inputRef.current.focus();
+  }, []);
+  //focusing on input in todo page
+  useEffect(() => {
+    if (keepAutoFocus) {
+      inputRef.current.focus();
+    }
   });
 
   return (
@@ -23,6 +31,7 @@ function InputWithLabel({
         ref={inputRef}
         id={id}
         type={type}
+        placeholder={placeholder}
         name={name}
         value={value}
         onChange={onInputChange}
@@ -35,7 +44,9 @@ InputWithLabel.propTypes = {
   children: PropTypes.object,
   value: PropTypes.string,
   type: PropTypes.string,
+  placeholder: PropTypes.string,
   name: PropTypes.string,
   onInputChange: PropTypes.func,
+  keepAutoFocus: PropTypes.bool,
 };
 export default InputWithLabel;

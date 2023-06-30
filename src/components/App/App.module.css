@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+
+body {
+    font-family: 'Montserrat', 'Helvetica', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+
+}
+
+.light {
+    color: rgb(77, 55, 103);
+    background: linear-gradient(to right, rgba(239, 238, 238, 0.85), rgba(255, 255, 255, 0.85));
+    background-size: cover;
+    height: 100vh;
+    overflow: auto;
+}
+
+.dark {
+    color: rgb(223, 223, 223);
+    background: linear-gradient(to right, rgba(17, 17, 17, 0.9), rgba(22, 22, 22, 0.9));
+    background-size: cover;
+    height: 100vh;
+    overflow: auto;
+}
+
+label,
+input {
+    margin: 10px;
+    text-align: center;
+}
+
+
+input {
+    width: 175px;
+    height: 20px;
+    cursor: pointer;
+    border-width: 1px;
+    border-radius: 5px;
+}
+
+h1 {
+    font-size: 35px;
+    font-weight: 900;
+}
+
+h2 {
+    font-size: 30px;
+    font-weight: 700;
+}
+
+footer {
+    background-color: rgba(0, 0, 0, .01);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .01);
+    backdrop-filter: blur(8px);
+    font-size: 15px;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    right: inherit;
+
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+    input {
+        width: auto;
+        height: auto;
+    }
+
+    h1 {
+        font-size: 30px;
+        font-weight: 900;
+    }
+
+    h2 {
+        font-size: 25px;
+        font-weight: 700;
+    }
+}
+
+
+@media (max-width: 767px) {
+
+
+    input {
+        width: auto;
+        height: auto;
+    }
+
+    h1 {
+        font-size: 25px;
+        font-weight: 900;
+    }
+
+    h2 {
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+    footer {
+        font-size: 12px;
+    }
+}

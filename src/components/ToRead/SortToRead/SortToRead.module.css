@@ -1,0 +1,20 @@
+.SortToRead {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-align-last: center;
+}
+
+.SortToRead span {
+    padding: 0;
+}
+
+.SortButton button {
+    font-size: 10px;
+    width: 120px;
+    height: 20px;
+    margin: 0px 20px 0px 20px;
+    padding: 5px;
+}

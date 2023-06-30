@@ -1,0 +1,5 @@
+.LoadButton button {
+    font-size: 12px;
+    padding: 5px 15px 5px 15px;
+    cursor: pointer;
+}

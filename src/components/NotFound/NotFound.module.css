@@ -1,0 +1,18 @@
+.NotFound {
+    background: url('../../img/404.svg') center no-repeat;
+    padding-top: 150px;
+    width: auto;
+    overflow: hidden;
+    min-height: calc(100% - 160px);
+}
+
+.Error {
+    font-size: 50px;
+    text-align: center;
+}
+
+@media (max-width: 767px) {
+    .Error {
+        font-size: 35px;
+    }
+}

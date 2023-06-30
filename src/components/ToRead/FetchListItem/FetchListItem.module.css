@@ -1,0 +1,74 @@
+.FetchBookFromGoogle {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 2px;
+    margin: 3px;
+    background-color: rgba(0, 0, 0, .02);
+    width: 90%;
+    align-items: center;
+    text-decoration: none;
+    border-radius: .3em;
+    text-align: left;
+}
+
+.BookNameAuthorImg,
+.BookDescription {
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    margin: 10px;
+}
+
+.BookNameAuthorImg {
+    font-size: 20px;
+    width: 100%;
+}
+
+.BookDescription {
+    font-size: 15px;
+    text-indent: 10px
+}
+
+.BookNameAuthorImg span {
+    padding: 10px;
+    align-items: center;
+}
+
+.BookImg {
+    width: 15%;
+}
+
+.BookName {
+    flex-wrap: wrap;
+    width: 35%;
+}
+
+.BookAuthor {
+    width: 35%;
+}
+
+.AddBookButton {
+    width: 5%;
+}
+
+.BookThumbnail {
+    height: 100px;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .FetchBookFromGoogle {
+        width: 100%;
+    }
+}
+
+@media (max-width: 767px) {
+
+    .BookNameAuthorImg {
+        font-size: 15px;
+    }
+
+    .BookDescription {
+        font-size: 12px;
+    }
+}

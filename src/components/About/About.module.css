@@ -1,0 +1,7 @@
+.AboutPage {
+    font-size: 45px;
+    text-indent: 10px;
+    text-align: left;
+    padding: 150px 40px 40px 40px;
+    min-height: calc(100% - 250px);
+}
