@@ -16,7 +16,7 @@ function NotFound() {
 
   return (
     <div className={style.NotFound}>
-      <h1 className={style.Error}>Page not found</h1>
+      <div className={style.Error}>Page not found</div>
     </div>
   );
 }
