@@ -35,7 +35,7 @@ function App() {
       <BrowserRouter>
         <NavBar theme={theme} handleToggle={handleToggle} />
         <Routes>
-          <Route path="/about" element={<About />} />
+          <Route path="/home" element={<About />} />
           <Route
             path="/todo"
             element={
@@ -56,7 +56,7 @@ function App() {
               />
             }
           />
-          <Route path="/" element={<Navigate to="/about" />} />
+          <Route path="/" element={<Navigate to="/home" />} />
           <Route path="/*" element={<Navigate to="/404" />} />
           <Route path="/404" element={<NotFound />} />
         </Routes>

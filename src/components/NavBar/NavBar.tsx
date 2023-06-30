@@ -26,13 +26,13 @@ function NavBar({ theme, handleToggle }: NavBarProps) {
   }, []);
 
   const navigate = useNavigate();
-  const navigateToTodo = () => {
-    navigate("/todo");
+  const navigateToHome = () => {
+    navigate("/home");
   };
   return (
     <header>
       <div className={style.NavBar}>
-        <div onClick={navigateToTodo} className={style.Logo}>
+        <div onClick={navigateToHome} className={style.Logo}>
           {theme === "light" ? <Logo /> : <LogoDarkMode />}
         </div>
         {screenSize < 767 ? (
@@ -48,14 +48,14 @@ function NavBar({ theme, handleToggle }: NavBarProps) {
               </Button>
             ) : (
               <ul className={style.MobileMenuLinks}>
+                 <li>
+                  <Link to="/home">About</Link>
+                </li>
                 <li>
                   <Link to="/todo">Todo</Link>
                 </li>
                 <li>
                   <Link to="/toread">To Read</Link>
-                </li>
-                <li>
-                  <Link to="/about">About</Link>
                 </li>
                 <li>
                   <div
@@ -70,9 +70,9 @@ function NavBar({ theme, handleToggle }: NavBarProps) {
           </>
         ) : (
           <div className="style.FullSizeNavBar">
+              <Link to="/home">About</Link>
             <Link to="/todo">Todo</Link>
             <Link to="/toread">To Read</Link>
-            <Link to="/about">About</Link>
           </div>
         )}
         <LightDarkMode theme={theme} handleToggle={handleToggle} />

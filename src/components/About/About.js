@@ -5,7 +5,7 @@ import style from "./About.module.css";
 function About() {
   const location = useLocation();
   useEffect(() => {
-    if (location.pathname === "/about") {
+    if (location.pathname === "/home") {
       document.body.style.backgroundImage =
         "url('./pexels-cottonbro-studio-5191390.jpg')";
       document.body.style.backgroundSize = "cover";
