@@ -14,8 +14,14 @@ function About() {
   }, [location.pathname]);
   return (
     <div className={style.AboutPage}>
-      The ultimate productivity companion for managing your tasks and organizing
-      your reading list.
+      <p>
+        The ultimate productivity companion for managing your tasks and
+        organizing your reading list.
+      </p>
+      <p>
+        This empowering you to accomplish more and indulge in your love for
+        books.
+      </p>
     </div>
   );
 }
