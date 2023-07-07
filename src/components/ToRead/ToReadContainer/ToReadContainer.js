@@ -146,7 +146,7 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
   }, [tableBooksName]);
 
   // fetch books from Google Books
-  const fetchBook = async (search, page, limit) => {
+  const fetchBook = async (search, page, limit, loadMore = false) => {
     const startIndex = (page - 1) * limit;
     const url = `https://www.googleapis.com/books/v1/volumes?q=${search}&startIndex=${startIndex}&maxResults=${limit}`;
     const options = {
@@ -159,17 +159,21 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
       }
       const data = await response.json();
       if (data.items) {
-        setBooks([...books, ...data.items]);
+        if (loadMore) {
+          setBooks([...books, ...data.items]);
+        } else {
+          setBooks(data.items);
+        }
       }
     } catch (error) {
       console.log(error.message);
     }
   };
-
+  console.log(search);
   // workind with pagination
   useEffect(() => {
-    if (isAddingBook === true && search !== "") {
-      fetchBook(search, page, limit);
+    if (search !== "") {
+      fetchBook(search, page, limit, true);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAddingBook, page]);

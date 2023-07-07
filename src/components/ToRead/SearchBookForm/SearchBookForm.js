@@ -39,7 +39,7 @@ function SearchBookForm({
         >
           <strong>Add book</strong>
         </InputWithLabel>
-        <Button type="submit" title="add new book">
+        <Button type="submit" title="search books">
           <Search />
         </Button>
         <Button type="button" title="enter new book" onClick={handleAddNewBook}>
