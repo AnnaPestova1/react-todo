@@ -6,7 +6,6 @@
     backdrop-filter: blur(8px);
     font-size: 20px;
     top: 0;
-    margin-top: 0;
     width: 100%;
     position: fixed;
     justify-content: space-between;
@@ -31,6 +30,14 @@
     cursor: pointer;
 }
 
+.FullSizeNavbar {
+    display: flex;
+}
+
+.Active {
+    font-weight: bold;
+}
+
 .MobileMenu svg {
     fill: rgb(125, 85, 175);
     align-items: end;
@@ -40,7 +47,7 @@
 }
 
 .MobileMenuLinks {
-    font-size: 12px;
+    font-size: 35px;
     text-align: center;
     overflow: hidden;
     margin: 5px;
