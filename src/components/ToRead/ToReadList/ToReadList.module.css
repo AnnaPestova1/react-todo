@@ -3,4 +3,5 @@
     flex-flow: column wrap;
     align-items: center;
     text-align: center;
+    padding: 0;
 }

@@ -1,7 +1,7 @@
 .ToReadContainer {
     overflow: auto;
     padding: 80px 20px 20px 20px;
-    margin: 25px;
+    margin-top: 25px;
     text-align: center;
     min-height: calc(100% - 210px);
 }
@@ -20,7 +20,7 @@
     text-align: center
 }
 
-.ToReadLosrAndAddButton button {
+.ToReadListAndAddButton button {
     margin: 0 10px 0 10px;
     background-color: rgb(215, 213, 222);
     color: rgb(28, 3, 105);
@@ -33,7 +33,7 @@
 }
 
 @media (max-width: 767px) {
-    .ToReadLosrAndAddButton button {
+    .ToReadListAndAddButton button {
         font-size: 12px;
         height: 20px;
         width: auto;

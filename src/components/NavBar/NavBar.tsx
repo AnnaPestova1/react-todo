@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import LightDarkMode from "../LightDarkMode/LightDarkMode";
 import Button from "../Button/Button";
 import { ReactComponent as Logo } from "../../img/CustomLogo.svg";
@@ -47,20 +47,19 @@ function NavBar({ theme, handleToggle }: NavBarProps) {
                 <Menu />
               </Button>
             ) : (
-              <ul className={style.MobileMenuLinks}>
+              <ul className={style.MobileMenuLinks} onClick={() => setShowMenu(false)}>
                  <li>
-                  <Link to="/home">About</Link>
+                  <NavLink className={({isActive}) => isActive ? style.Active : ""} to="/home" >About</NavLink>
                 </li>
                 <li>
-                  <Link to="/todo">Todo</Link>
+                  <NavLink className={({isActive}) => isActive ? style.Active : ""} to="/todo">Todo</NavLink>
                 </li>
                 <li>
-                  <Link to="/toread">To Read</Link>
+                  <NavLink className={({isActive}) => isActive ? style.Active : ""} to="/toread">To Read</NavLink>
                 </li>
                 <li>
                   <div
                     className={style.CloseNavBar}
-                    onClick={() => setShowMenu(false)}
                   >
                     <Close />
                   </div>
@@ -69,10 +68,10 @@ function NavBar({ theme, handleToggle }: NavBarProps) {
             )}
           </>
         ) : (
-          <div className="style.FullSizeNavBar">
-              <Link to="/home">About</Link>
-            <Link to="/todo">Todo</Link>
-            <Link to="/toread">To Read</Link>
+          <div className={style.FullSizeNavbar}>
+              <NavLink className={({isActive}) => isActive ? style.Active : ""} to="/home">About</NavLink>
+            <NavLink className={({isActive}) => isActive ? style.Active : ""} to="/todo">Todo</NavLink>
+            <NavLink className={({isActive}) => isActive ? style.Active : ""} to="/toread">To Read</NavLink>
           </div>
         )}
         <LightDarkMode theme={theme} handleToggle={handleToggle} />

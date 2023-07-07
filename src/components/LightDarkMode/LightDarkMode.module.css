@@ -1,3 +1,10 @@
 .LightDarkButton {
     float: right;
+    margin-right: 30px;
+}
+
+@media (max-width: 767px) {
+    .LightDarkButton {
+        margin-right: 15px;
+    }
 }

@@ -6,10 +6,15 @@
     background-color: rgba(0, 0, 0, .02);
     width: 75%;
     align-items: center;
+    justify-items: center;
     height: 50px;
     text-decoration: none;
     border-radius: .3em;
     text-align: left;
+}
+
+.ListItem span {
+    margin-right: 10px
 }
 
 .TodoTitle {
@@ -22,16 +27,16 @@
 
 @media (min-width: 768px) and (max-width: 991px) {
     .ListItem {
-        width: 100%;
+        width: 95%;
     }
 }
 
 @media (max-width: 767px) {
     .ListItem {
-        font-size: 15px;
         display: grid;
         grid-auto-flow: dense;
-        grid-template-columns: 70% 30%;
+        grid-template-columns: 50% 20% 30%;
         height: 100px;
+        width: 100%;
     }
 }
