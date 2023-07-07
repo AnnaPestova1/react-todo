@@ -169,7 +169,6 @@ function ToReadContainer({ tableBooksName, baseName, apiKey }) {
       console.log(error.message);
     }
   };
-  console.log(search);
   // workind with pagination
   useEffect(() => {
     if (search !== "") {
